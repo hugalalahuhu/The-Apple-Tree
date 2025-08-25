@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href='https://fonts.googleapis.com/css?family=Press Start 2P' rel='stylesheet'>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" type="text/css" href="snow.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <title>**********************************</title>
+</head>
+<body onkeyup="keyupf()" id="bruh" onload="error()" onkeypress="keypressed()" style="overflow-x: hidden;image-rendering: pixelated;">
+<label style="float:left;">Player1 Health</label><input type="range" id="health" min="0" max="2" disabled value="2">
+<label style="float: right;">Player2 Health</label><input type="range" id="health2" min="0" max="2" disabled value="2" style="float: right;transform: scale(-1);"><br>
+<label style="float:left;">Player1 Energy</label><input type="range" id="chakra" min="0" max="2" disabled value="2">
+<label style="float:right;">Player2 Energy</label><input type="range" id="chakra2" min="0" max="2" disabled value="2" style="float: right;transform: scale(-1);">
+<button onclick="window.open('index.htm','_self')" style="position: fixed;top: 0%;right: 50%;" class="btn"><img src="home.png"alt='home'></button>
+<style>
+  body{
+    background-image: url("academy.png");
+    background-size:cover;
+    background-attachment: fixed;
+    overflow-y: hidden;
+    image-rendering: pixelated;
+    padding: 0%;
+  }
+  .arca{
+		font-family: "Press Start 2P";
+	}
+</style>
+<script>
+function error() {
+if (sessionStorage.playload===false || sessionStorage.playload==undefined){document.write('<h1 style="background-color: aqua;border-left: 8px solid blue;">Failed to load file! Error 102</h1><button style="position: fixed;bottom: 0%;right: 50%;background-color:black" id="homeis"><img src="home.png"alt="home"></button>');document.getElementById('homeis').addEventListener('click',function() {window.open('index.htm','_self')});/*sessionStorage.playload=false*/}else{sessionStorage.playload=false};
+}
+
+document.body.addEventListener('keydown',keydownfunc)
+document.addEventListener('keydown',keydown2)
+//character adding section
+  character=new Image();
+  character.src=localStorage.character+"/stance.gif"
+  character.addEventListener('error',function() {document.write('<h1 style="background-color: aqua;border-left: 8px solid blue;">Failed!Error 101 image loading failed.</h1><button style="position: fixed;bottom: 0%;right: 50%;background-color:black" id="homeis"><img src="home.png"alt="home"></button>');document.getElementById('homeis').addEventListener('click',function() {window.open('index.htm','_self')})})
+  document.body.appendChild(character);
+  character.style.transform="scaleX(1)"
+  character.style.position="absolute"
+  character.style.right=(window.innerWidth-70)+"px"
+  character2=new Image();
+  character2.src=localStorage.character2+"/stance.gif"
+  character2.addEventListener('error',function() {document.write('<h1 style="background-color: aqua;border-left: 8px solid blue;">Failed!Error 101 image loading failed.</h1><button style="position: fixed;bottom: 0%;right: 70%;background-color:black" id="homeis"><img src="home.png"alt="home"></button>');document.getElementById('homeis').addEventListener('click',function() {window.open('index.htm','_self')})})
+  document.body.appendChild(character2);
+  character2.style.transform="scaleX(-1)"
+  character2.style.position="absolute"
+  character.style.bottom="0%"
+  character2.style.bottom="0%"
+  if (localStorage.background=='') {}
+  character2.style.right="0px"
+//details
+  naruto={speed:3,health:100,energy:20,power:20}
+  naruto2={speed:3,health:100,energy:20,power:20}
+  sasuke={speed:10,health:50,energy:3,power:11}
+  sasuke2={speed:10,health:50,energy:3,power:11}
+//other stuff
+  document.getElementById('chakra').setAttribute('max',eval(localStorage.character).energy)
+  document.getElementById('chakra').setAttribute('value',eval(localStorage.character).energy)
+  document.getElementById('chakra2').setAttribute('max',eval(localStorage.character2+'2').energy)
+  document.getElementById('chakra2').setAttribute('value',eval(localStorage.character2+'2').energy)
+  document.getElementById('health').setAttribute('max',eval(localStorage.character).health)
+  document.getElementById('health').setAttribute('value',eval(localStorage.character).health)
+  document.getElementById('health2').setAttribute('max',eval(localStorage.character2+'2').health)
+  document.getElementById('health2').setAttribute('value',eval(localStorage.character2+'2').health)
+if (localStorage.background==undefined) {
+  document.getElementById('bruh').style.backgroundImage='url("academy.png")'
+}
+else{
+  document.getElementById('bruh').style.backgroundImage='url("'+localStorage.background+'"),url('+localStorage.footing+')';
+}
+let farawayblown=false;
+let farawayblown2=false
+let attack1=false;
+let attack12=false;
+const limitchar=eval(localStorage.character).energy
+const limitchar2=eval(localStorage.character2+'2').energy
+let clickedown=false;
+let clickedown2=false;
+let clickingleft=false;
+let clickingright=false;
+let clickingright2=false;
+let clickingleft2=false;
+let clickinglefta=false;
+let clickingrighta=false;
+let clickingrighta2=false;
+let clickinglefta2=false;
+let clickedup=false;
+let clickedup2=false;
+let chardead=false;
+let jutsu12=false;
+let jutsu1=false;
+//event listener function
+function keypressed() {
+	keycodeid=event.which;
+	switch(keycodeid){
+case 88:
+	if(attack1===false){
+    attack1=true;
+    if (localStorage.character=='naruto') {
+    character.src=localStorage.character+'/attack1.gif';
+    setTimeout(function() {character.src=localStorage.character+'/stance.gif';if (Math.abs(parseInt(character.style.right)-parseInt(character2.style.right))<=65) {if(localStorage.character2=='naruto' && clickedup2===false){ eval(localStorage.character2).health=document.getElementById('health2').value;eval(localStorage.character2).health=eval(localStorage.character2).health-eval(localStorage.character).power;document.getElementById('health2').setAttribute('value',naruto.health);eval(localStorage.character2).health=document.getElementById('health2').getAttribute('max');character2.src=localStorage.character2+'/land.png';character2.style.right=parseInt(character2.style.right)-20+"px";}else if(localStorage.character2=='sasuke'){eval(localStorage.character2).health=document.getElementById('health2').value;eval(localStorage.character2).health=eval(localStorage.character2).health-eval(localStorage.character).power;document.getElementById('health2').setAttribute('value',eval(localStorage.character2).health);eval(localStorage.character2).health=document.getElementById('health2').getAttribute('max');character2.src=localStorage.character2+'/damage1.png';if((parseInt(character2.style.right)-parseInt(character.style.right))==Math.abs(parseInt(character2.style.right)-parseInt(character.style.right))){character2.style.transform="scaleX(1)";character2.style.right=parseInt(character2.style.right)+20+"px";}else{character2.style.transform="scaleX(-1)";character2.style.right=parseInt(character2.style.right)-20+"px";}attack1=false;}} setTimeout(function() {character2.src=localStorage.character2+'/stance.gif';attack1=false;},400)},500)
+  }
+  if (localStorage.character=='sasuke'){
+    character.src=localStorage.character+"/attack2.gif";
+		setTimeout(function() {character.src=localStorage.character+'/stance.gif';if (Math.abs(parseInt(character.style.right)-parseInt(character2.style.right))<=76) {if(localStorage.character2=='naruto' && clickedup2===false){ eval(localStorage.character2).health=document.getElementById('health2').value;eval(localStorage.character2).health=eval(localStorage.character2).health-eval(localStorage.character).power;document.getElementById('health2').setAttribute('value',eval(localStorage.character).health);eval(localStorage.character2).health=document.getElementById('health2').getAttribute('max');character2.src=localStorage.character2+'/damage2.png';if(parseInt(character.style.right)<parseInt(character2.style.right)){character2.style.transform="scaleX(1)";character2.style.right=parseInt(character2.style.right)+20+"px";}else{character2.style.transform="scaleX(-1)";character2.style.right=parseInt(character2.style.right)-20+"px";}}else if(localStorage.character2=='sasuke'){eval(localStorage.character2).health=document.getElementById('health2').value;eval(localStorage.character2).health=eval(localStorage.character2).health-eval(localStorage.character).power;document.getElementById('health2').setAttribute('value',eval(localStorage.character2).health);eval(localStorage.character2).health=document.getElementById('health2').getAttribute('max');character2.src=localStorage.character2+'/damage1.png';if((parseInt(character2.style.right)-parseInt(character.style.right))==Math.abs(parseInt(character2.style.right)-parseInt(character.style.right))){character2.style.transform="scaleX(1)";character2.style.right=parseInt(character2.style.right)+20+"px";}else{character2.style.transform="scaleX(-1)";character2.style.right=parseInt(character2.style.right)-20+"px";}attack1=false;}}setTimeout(function() {character2.src=localStorage.character2+'/stance.gif';attack1=false;},400)},500)
+  }
+	
+  }
+	break;
+case 120:
+if(attack1===false){
+    attack1=true;
+    if (localStorage.character=='naruto') {
+    character.src=localStorage.character+'/attack1.gif';
+    setTimeout(function() {character.src=localStorage.character+'/stance.gif';if (Math.abs(parseInt(character.style.right)-parseInt(character2.style.right))<=65) {if(localStorage.character2=='naruto' && clickedup2===false){ eval(localStorage.character2).health=document.getElementById('health2').value;eval(localStorage.character2).health=eval(localStorage.character2).health-eval(localStorage.character).power;document.getElementById('health2').setAttribute('value',naruto.health);eval(localStorage.character2).health=document.getElementById('health2').getAttribute('max');character2.src=localStorage.character2+'/land.png';character2.style.right=parseInt(character2.style.right)-20+"px";}else if(localStorage.character2=='sasuke'){eval(localStorage.character2).health=document.getElementById('health2').value;eval(localStorage.character2).health=eval(localStorage.character2).health-eval(localStorage.character).power;document.getElementById('health2').setAttribute('value',eval(localStorage.character2).health);eval(localStorage.character2).health=document.getElementById('health2').getAttribute('max');character2.src=localStorage.character2+'/damage1.png';if((parseInt(character2.style.right)-parseInt(character.style.right))==Math.abs(parseInt(character2.style.right)-parseInt(character.style.right))){character2.style.transform="scaleX(1)";character2.style.right=parseInt(character2.style.right)+20+"px";}else{character2.style.transform="scaleX(-1)";character2.style.right=parseInt(character2.style.right)-20+"px";}attack1=false;}} setTimeout(function() {character2.src=localStorage.character2+'/stance.gif';attack1=false;},400)},500)
+  }
+  if (localStorage.character=='sasuke'){
+    character.src=localStorage.character+"/attack2.gif";
+		setTimeout(function() {character.src=localStorage.character+'/stance.gif';if (Math.abs(parseInt(character.style.right)-parseInt(character2.style.right))<=76) {if(localStorage.character2=='naruto' && clickedup2===false){ eval(localStorage.character2).health=document.getElementById('health2').value;eval(localStorage.character2).health=eval(localStorage.character2).health-eval(localStorage.character).power;document.getElementById('health2').setAttribute('value',eval(localStorage.character).health);eval(localStorage.character2).health=document.getElementById('health2').getAttribute('max');character2.src=localStorage.character2+'/damage2.png';if(parseInt(character.style.right)<parseInt(character2.style.right)){character2.style.transform="scaleX(1)";character2.style.right=parseInt(character2.style.right)+20+"px";}else{character2.style.transform="scaleX(-1)";character2.style.right=parseInt(character2.style.right)-20+"px";}}else if(localStorage.character2=='sasuke'){eval(localStorage.character2).health=document.getElementById('health2').value;eval(localStorage.character2).health=eval(localStorage.character2).health-eval(localStorage.character).power;document.getElementById('health2').setAttribute('value',eval(localStorage.character2).health);eval(localStorage.character2).health=document.getElementById('health2').getAttribute('max');character2.src=localStorage.character2+'/damage1.png';if((parseInt(character2.style.right)-parseInt(character.style.right))==Math.abs(parseInt(character2.style.right)-parseInt(character.style.right))){character2.style.transform="scaleX(1)";character2.style.right=parseInt(character2.style.right)+20+"px";}else{character2.style.transform="scaleX(-1)";character2.style.right=parseInt(character2.style.right)-20+"px";}attack1=false;}}setTimeout(function() {character2.src=localStorage.character2+'/stance.gif';attack1=false;},400)},500)
+  }
+	
+  }
+	break;
+    case 87:
+      if (clickedup===false) {
+        clickedup=true;
+        if (localStorage.character=='naruto') {
+      character.src=localStorage.character+'/jump.png'
+      setTimeout(function() {character.style.bottom=(parseInt(character.style.bottom)+10)+'%'},50)
+      setTimeout(function() {character.style.bottom=parseInt(character.style.bottom)-10+'%';character.src=localStorage.character+'/land.png'},550)
+      setTimeout(function() {character.src=localStorage.character+"/stance.gif";clickedup=false},700)
+    }else if (localStorage.character=='sasuke') {
+      character.src=localStorage.character+'/jump.png'
+      setTimeout(function() {character.style.bottom=(parseInt(character.style.bottom)+10)+'%';if(character.style.transform=='scaleX(-1)'){character.style.right=parseInt(character.style.right)+eval(localStorage.character).speed*20+"px";}else{if((parseInt(character.style.right)-sasuke.speed*20)>parseInt(character2.style.right)){character.style.right=parseInt(character.style.right)-eval(localStorage.character).speed*20+"px";}}},50)
+      setTimeout(function() {character.style.bottom=parseInt(character.style.bottom)-10+'%';character.src=localStorage.character+'/land.png'},550)
+      setTimeout(function() {character.src=localStorage.character+"/stance.gif";clickedup=false},700)
+    }
+  }
+      break;
+    case 119:
+      if (clickedup===false) {
+        clickedup=true;
+        if (localStorage.character=='naruto') {
+      character.src=localStorage.character+'/jump.png'
+      setTimeout(function() {character.style.bottom=(parseInt(character.style.bottom)+10)+'%'},50)
+      setTimeout(function() {character.style.bottom=parseInt(character.style.bottom)-10+'%';character.src=localStorage.character+'/land.png'},550)
+      setTimeout(function() {character.src=localStorage.character+"/stance.gif";clickedup=false},700)
+    }else if (localStorage.character=='sasuke') {
+      character.src=localStorage.character+'/jump.png'
+      setTimeout(function() {character.style.bottom=(parseInt(character.style.bottom)+10)+'%';if(character.style.transform=='scaleX(-1)'){character.style.right=parseInt(character.style.right)+eval(localStorage.character).speed*20+"px";}else{if((parseInt(character.style.right)-sasuke.speed*20)>parseInt(character2.style.right)){character.style.right=parseInt(character.style.right)-eval(localStorage.character).speed*20+"px";}}},50)
+      setTimeout(function() {character.style.bottom=parseInt(character.style.bottom)-10+'%';character.src=localStorage.character+'/land.png'},550)
+      setTimeout(function() {character.src=localStorage.character+"/stance.gif";clickedup=false},700)
+    }
+  }
+      break;
+case 83:
+	if (clickedown===false) {
+		clickedown=true;
+		if (localStorage.character=='naruto' && naruto.energy>0) {
+			character.src=localStorage.character+'/sexy.gif'
+			eval(localStorage.character).energy=eval(localStorage.character).energy-0.3;
+			farawayblown2=false;
+			if (Math.abs(parseInt(character.style.right)-parseInt(character2.style.right))<80 && farawayblown2==false){
+			if (parseInt(character.style.right)<parseInt(character2.style.right)) {
+				farawayblown2=true;
+				character2.style.right=parseInt(character2.style.right)+30+"px"; 
+			}else{character2.style.right=parseInt(character2.style.right)-30+"px"; }
+		}
+			setTimeout(function() {character.src='naruto/stance.gif';},1500)
+      setTimeout(function(){clickedown=false},3000)
+		}
+		const diff=Math.abs(eval(localStorage.character).speed-eval(localStorage.character2+'2').speed);
+    if(localStorage.character=='sasuke' && sasuke.energy>0){
+		if ((eval(localStorage.character2+'2').speed*2)<diff) {
+		sasuke.energy=sasuke.energy-2;
+		character.src=localStorage.character+'/teleport.png'
+		setTimeout(function(){character.style.right=parseInt(character2.style.right)+200+'px';},100)
+		setTimeout(function() {character.src=localStorage.character+'/land.png'},500)
+		setTimeout(function() {if(eval(localStorage.character).energy>0){character.src=localStorage.character+'/stance.gif';}else{character.src=localStorage.character+'/dead.gif';document.removeEventListener('keydown',keydown2);};clickedown=false},700)
+	}else{clickedown=false}
+}
+	}
+	break;
+case 115:
+	if (clickedown===false) {
+    clickedown=true;
+    if (localStorage.character=='naruto' && naruto.energy>0) {
+      character.src=localStorage.character+'/sexy.gif'
+      eval(localStorage.character).energy=eval(localStorage.character).energy-0.3;
+      farawayblown2=false;
+      if (Math.abs(parseInt(character.style.right)-parseInt(character2.style.right))<80 && farawayblown2==false){
+      if (parseInt(character.style.right)<parseInt(character2.style.right)) {
+        farawayblown2=true;
+        character2.style.right=parseInt(character2.style.right)+30+"px"; 
+      }else{character2.style.right=parseInt(character2.style.right)-30+"px"; }
+    }
+      setTimeout(function() {character.src='naruto/stance.gif';},1500)
+      setTimeout(function(){clickedown=false},3000)
+    }
+    const diff=Math.abs(eval(localStorage.character).speed-eval(localStorage.character2+'2').speed);
+    if(localStorage.character=='sasuke' && sasuke.energy>0){
+    if ((eval(localStorage.character2+'2').speed*2)<diff) {
+    sasuke.energy=sasuke.energy-1;
+    character.src=localStorage.character+'/teleport.png'
+    setTimeout(function(){character.style.right=parseInt(character2.style.right)+200+'px';},100)
+    setTimeout(function() {character.src=localStorage.character+'/land.png'},500)
+    setTimeout(function() {if(eval(localStorage.character).energy>0){character.src=localStorage.character+'/stance.gif';}else{character.src=localStorage.character+'/dead.gif';document.removeEventListener('keydown',keydown2);};clickedown=false},700)
+  }else{clickedown=false}
+}
+  }
+	break;
+	}
+}
+function keydown2() {
+  var keycodeis2=event.which;	
+  if(clickedup===false && clickedown===false && attack1===false){
+  switch (keycodeis2){
+    case 68:
+      if (clickingleft===false) {
+      character.style.transform="scaleX(1)" 
+      character.src=localStorage.character+"/move.gif"
+    }
+    clickingleft=true;
+    clickinglefta=true;
+    if (Math.abs(parseInt(character.style.right)-parseInt(character2.style.right))>60) {
+character.style.right=parseInt(character.style.right)-eval(localStorage.character).speed+"px"; 
+}else{
+	if (character2.style.transform=='scaleX(1)' && parseInt(character.style.right)<parseInt(character2.style.right)) {
+		character.style.right=parseInt(character.style.right)-eval(localStorage.character).speed+"px"; 
+	}
+}
+  if(clickinglefta2===true){
+    if (clickingleft2===false) {
+      character2.style.transform="scaleX(1)"  
+      character2.src=localStorage.character2+"/move.gif"
+    }
+    if (Math.abs(parseInt(character.style.right)-parseInt(character2.style.right))>60) {
+character2.style.right=parseInt(character2.style.right)-eval(localStorage.character2+'2').speed+"px";
+}else{
+	if (character.style.transform=='scaleX(1)' && parseInt(character2.style.right)<parseInt(character.style.right)) {
+		character2.style.right=parseInt(character2.style.right)-eval(localStorage.character2+'2').speed+"px"; 
+	}
+}
+}
+  if (clickingrighta2===true) {
+      if (clickingright2===false) {
+      character2.style.transform="scaleX(-1)" 
+      character2.src=localStorage.character2+"/move.gif"
+    }
+if (Math.abs(parseInt(character.style.right)-parseInt(character2.style.right))>60) {
+character2.style.right=parseInt(character2.style.right)+eval(localStorage.character2+'2').speed+"px";
+}else{
+	if (character.style.transform=='scaleX(-1)' && parseInt(character2.style.right)>parseInt(character.style.right)) {
+		character2.style.right=parseInt(character2.style.right)+eval(localStorage.character2+'2').speed+"px"; 
+	}
+}
+  }
+    break;
+    case 65:
+       if (clickingright===false) {
+      character.style.transform="scaleX(-1)"  
+      character.src=localStorage.character+"/move.gif"
+    }
+    clickingright=true;
+    clickingrighta=true;
+        if (Math.abs(parseInt(character.style.right)-parseInt(character2.style.right))>60) {
+    character.style.right=parseInt(character.style.right)+eval(localStorage.character).speed+"px"; 
+}else{
+	if (character2.style.transform=='scaleX(-1)' && parseInt(character.style.right)>parseInt(character2.style.right)) {
+		character.style.right=parseInt(character.style.right)+eval(localStorage.character).speed+"px"; 
+	}
+}
+    if(clickinglefta2===true){
+    if (clickingleft2===false) {
+      character2.style.transform="scaleX(1)"  
+      character2.src=localStorage.character2+"/move.gif"
+    }
+    if (Math.abs(parseInt(character.style.right)-parseInt(character2.style.right))>60) {
+character2.style.right=parseInt(character2.style.right)-eval(localStorage.character2+'2').speed+"px";
+}else{
+	if (character.style.transform=='scaleX(1)' && parseInt(character2.style.right)<parseInt(character.style.right)) {
+		character2.style.right=parseInt(character2.style.right)-eval(localStorage.character2+'2').speed+"px"; 
+	}
+}
+}
+  if (clickingrighta2===true) {
+      if (clickingright2===false) {
+      character2.style.transform="scaleX(-1)" 
+      character2.src=localStorage.character2+"/move.gif"
+    }
+if (Math.abs(parseInt(character.style.right)-parseInt(character2.style.right))>60) {
+character2.style.right=parseInt(character2.style.right)+eval(localStorage.character2+'2').speed+"px";
+}else{
+	if (character.style.transform=='scaleX(-1)' && parseInt(character2.style.right)>parseInt(character.style.right)) {
+		character2.style.right=parseInt(character2.style.right)+eval(localStorage.character2+'2').speed+"px"; 
+	}
+}
+ }
+    break;
+default:
+	if (clickinglefta===true) {
+    if (clickingleft===false) {
+      character.style.transform="scaleX(1)" 
+      character.src=localStorage.character+"/move.gif"
+    }
+if (Math.abs(parseInt(character.style.right)-parseInt(character2.style.right))>60) {
+character.style.right=parseInt(character.style.right)-eval(localStorage.character).speed+"px"; 
+}else{
+	if (character2.style.transform=='scaleX(1)' && parseInt(character.style.right)<parseInt(character2.style.right)) {
+		character.style.right=parseInt(character.style.right)-eval(localStorage.character).speed+"px"; 
+	}
+}
+}
+  if (clickingrighta===true) {
+    if (clickingright===false) {
+      character.style.transform="scaleX(-1)"  
+      character.src=localStorage.character+"/move.gif"
+    }
+if (Math.abs(parseInt(character.style.right)-parseInt(character2.style.right))>60) {
+character.style.right=parseInt(character.style.right)+eval(localStorage.character).speed+"px"; 
+}else{
+	if (character2.style.transform=='scaleX(1)' && parseInt(character.style.right)<parseInt(character2.style.right)) {
+		character.style.right=parseInt(character.style.right)+eval(localStorage.character).speed+"px"; 
+	}
+} 
+ }
+	break;
+}
+    }
+}
+  function keydownfunc() {
+    var keycodeis=event.which;
+    if(clickedup2===false && clickedown2===false && attack12===false){
+    switch (keycodeis){
+      case 39:
+      if (clickingleft2===false) {
+      character2.style.transform="scaleX(1)"  
+      character2.src=localStorage.character2+"/move.gif"
+    }
+    clickingleft2=true;
+    clickinglefta2=true;
+        if (Math.abs(parseInt(character.style.right)-parseInt(character2.style.right))>60) {
+character2.style.right=parseInt(character2.style.right)-eval(localStorage.character2+'2').speed+"px";
+}else{
+	if (character.style.transform=='scaleX(1)' && parseInt(character2.style.right)<parseInt(character.style.right)) {
+		character2.style.right=parseInt(character2.style.right)-eval(localStorage.character2+'2').speed+"px"; 
+	}
+}
+  if (clickinglefta===true) {
+    if (clickingleft===false) {
+      character.style.transform="scaleX(1)" 
+      character.src=localStorage.character+"/move.gif"
+    }
+if (Math.abs(parseInt(character.style.right)-parseInt(character2.style.right))>60) {
+character.style.right=parseInt(character.style.right)-eval(localStorage.character).speed+"px"; 
+}else{
+	if (character2.style.transform=='scaleX(1)' && parseInt(character.style.right)<parseInt(character2.style.right)) {
+		character.style.right=parseInt(character.style.right)-eval(localStorage.character).speed+"px"; 
+	}
+}
+}
+  if (clickingrighta===true) {
+    if (clickingright===false) {
+      character.style.transform="scaleX(-1)"  
+      character.src=localStorage.character+"/move.gif"
+    }
+if (Math.abs(parseInt(character.style.right)-parseInt(character2.style.right))>60) {
+character.style.right=parseInt(character.style.right)+eval(localStorage.character).speed+"px"; 
+}else{
+	if (character2.style.transform=='scaleX(-1)' && parseInt(character.style.right)<parseInt(character2.style.right)) {
+		character.style.right=parseInt(character.style.right)+eval(localStorage.character).speed+"px"; 
+	}
+} 
+ }
+    break;
+    case 37:
+      if (clickingright2===false) {
+      character2.style.transform="scaleX(-1)" 
+      character2.src=localStorage.character2+"/move.gif"
+    }
+    clickingright2=true;
+    clickingrighta2=true;
+        if (Math.abs(parseInt(character.style.right)-parseInt(character2.style.right))>60) {
+character2.style.right=parseInt(character2.style.right)+eval(localStorage.character2+'2').speed+"px";
+}else{
+	if (character.style.transform=='scaleX(-1)' && parseInt(character2.style.right)>parseInt(character.style.right)) {
+		character2.style.right=parseInt(character2.style.right)+eval(localStorage.character2+'2').speed+"px"; 
+	}
+}
+  if (clickingrighta===true) {
+    if (clickingright===false) {
+      character.style.transform="scaleX(-1)"  
+      character.src=localStorage.character+"/move.gif"
+    }
+if (Math.abs(parseInt(character.style.right)-parseInt(character2.style.right))>60) {
+character.style.right=parseInt(character.style.right)+eval(localStorage.character).speed+"px"; 
+}else{
+	if (character2.style.transform=='scaleX(-1)' && parseInt(character.style.right)>parseInt(character2.style.right)) {
+		character.style.right=parseInt(character.style.right)+eval(localStorage.character).speed+"px"; 
+	}
+}
+  }
+  if (clickinglefta===true) {
+    if (clickingleft===false) {
+      character.style.transform="scaleX(1)" 
+      character.src=localStorage.character+"/move.gif"
+    }
+if (Math.abs(parseInt(character.style.right)-parseInt(character2.style.right))>60) {
+character.style.right=parseInt(character.style.right)-eval(localStorage.character).speed+"px"; 
+}else{
+	if (character2.style.transform=='scaleX(1)' && parseInt(character.style.right)<parseInt(character2.style.right)) {
+		character.style.right=parseInt(character.style.right)-eval(localStorage.character).speed+"px"; 
+	}
+}
+  }
+    break;
+
+default:
+	if(clickinglefta2===true){
+    if (clickingleft2===false) {
+      character2.style.transform="scaleX(1)"  
+      character2.src=localStorage.character2+"/move.gif"
+    }
+    if (Math.abs(parseInt(character.style.right)-parseInt(character2.style.right))>60) {
+character2.style.right=parseInt(character2.style.right)-eval(localStorage.character2+'2').speed+"px";
+}else{
+	if (character.style.transform=='scaleX(1)' && parseInt(character2.style.right)<parseInt(character.style.right)) {
+		character2.style.right=parseInt(character2.style.right)-eval(localStorage.character2+'2').speed+"px"; 
+	}
+}
+}
+  if (clickingrighta2===true) {
+      if (clickingright2===false) {
+      character2.style.transform="scaleX(-1)" 
+      character2.src=localStorage.character2+"/move.gif"
+    }
+if (Math.abs(parseInt(character.style.right)-parseInt(character2.style.right))>60) {
+character2.style.right=parseInt(character2.style.right)+eval(localStorage.character2+'2').speed+"px";
+}else{
+	if (character.style.transform=='scaleX(-1)' && parseInt(character2.style.right)>parseInt(character.style.right)) {
+		character2.style.right=parseInt(character2.style.right)+eval(localStorage.character2+'2').speed+"px"; 
+	}
+}
+ }
+	break;
+    }
+}
+  }
+  function keyupf() {
+    var keycodeism=event.which;
+    switch(keycodeism){
+    case 68:
+      clickingleft=false;
+      clickinglefta=false;
+      if (clickingrighta!=true) {
+      character.src=localStorage.character+"/stance.gif";
+  }
+      break;
+    case 65:
+      clickingright=false;
+      clickingrighta=false;
+      if (clickinglefta!=true) {
+      character.src=localStorage.character+"/stance.gif"
+  }
+      break;
+    case 39:
+      clickingleft2=false;
+      clickinglefta2=false;
+      if (clickingrighta2!=true) {
+      character2.src=localStorage.character2+"/stance.gif"
+  }
+      break;
+    case 37:
+      clickingright2=false;
+      clickingrighta2=false;
+      if (clickinglefta2!=true) {
+      character2.src=localStorage.character2+"/stance.gif"
+  }
+      break;
+    case 38:
+      if (clickedup2===false) {
+        clickedup2=true;
+        if (localStorage.character2=='naruto') {
+      character2.src=localStorage.character2+'/jump.png'
+      setTimeout(function() {character2.style.bottom=(parseInt(character2.style.bottom)+10)+'%'},50)
+      setTimeout(function() {character2.style.bottom=parseInt(character2.style.bottom)-10+'%';character2.src=localStorage.character2+'/land.png'},550)
+      setTimeout(function() {character2.src=localStorage.character2+"/stance.gif";clickedup2=false},700)
+    }else if (localStorage.character2=='sasuke') {
+      character2.src=localStorage.character2+'/jump.png'
+      setTimeout(function() {character2.style.bottom=(parseInt(character2.style.bottom)+10)+'%';if(character2.style.transform=='scaleX(-1)'){if((parseInt(character2.style.right)+sasuke2.speed*20)<parseInt(character.style.right)){character2.style.right=parseInt(character2.style.right)+eval(localStorage.character2+'2').speed*20+"px";}}else{character2.style.right=parseInt(character2.style.right)-eval(localStorage.character2+'2').speed*20+"px";}},50)
+      setTimeout(function() {character2.style.bottom=parseInt(character2.style.bottom)-10+'%';character2.src=localStorage.character2+'/land.png';},550)
+      setTimeout(function() {character2.src=localStorage.character2+"/stance.gif";clickedup2=false},700)
+    }
+  }
+      break;
+  case 40:
+  	if (clickedown2===false) {
+		clickedown2=true;
+		farawayblown=false
+		if (localStorage.character2=='naruto') {
+			character2.src=localStorage.character2+'/sexy.gif'
+			eval(localStorage.character2+'2').energy=eval(localStorage.character2+'2').energy-0.3
+			if (Math.abs(parseInt(character.style.right)-parseInt(character2.style.right))<75 && farawayblown==false){
+				farawayblown=true;
+			if (parseInt(character.style.right)>parseInt(character2.style.right)) {
+				character.style.right=parseInt(character.style.right)+30+"px"; 
+			}else{character.style.right=parseInt(character.style.right)-30+"px"; }
+		}
+			setTimeout(function() {character2.src='naruto/stance.gif';clickedown2=false},1500)
+      setTimeout(function(){clickedown2=false},3000)
+		}		
+		const diff=Math.abs(eval(localStorage.character).speed-eval(localStorage.character2+'2').speed);
+    if(localStorage.character2=='sasuke'  && sasuke.energy>0){
+		if ((eval(localStorage.character).speed*2)<diff) {
+		sasuke2.energy=sasuke2.energy-2;
+		character2.src=localStorage.character2+'/teleport.png'
+		setTimeout(function(){character2.style.right=parseInt(character.style.right)-200+'px';},100)
+		setTimeout(function() {character2.src=localStorage.character2+'/land.png'},500)
+		setTimeout(function() {if(eval(localStorage.character2+'2').energy>0){character2.src=localStorage.character2+'/stance.gif';}else{character2.src=localStorage.character2+'/dead.gif';document.body.removeEventListener('keydown',keydownfunc);};clickedown2=false},700)
+	}else{clickedown2=false}
+}
+	}
+  break;     
+  case 12:
+ 	if(attack12===false){
+		attack12=true;
+		if (localStorage.character2=='naruto') {
+		character2.src=localStorage.character2+'/attack1.gif';
+		setTimeout(function() {character2.src=localStorage.character2+'/stance.gif';if (Math.abs(parseInt(character.style.right)-parseInt(character2.style.right))<=65) {if(localStorage.character=='naruto' && clickedup===false){  eval(localStorage.character).health=document.getElementById('health').value;eval(localStorage.character).health=eval(localStorage.character).health-eval(localStorage.character2).power;document.getElementById('health').setAttribute('value',eval(localStorage.character).health);eval(localStorage.character).health=document.getElementById('health').getAttribute('max');character.src=localStorage.character+'/land.png';character.style.right=parseInt(character.style.right)+20+"px";}else if(localStorage.character=='sasuke'){eval(localStorage.character).health=document.getElementById('health').value;eval(localStorage.character).health=eval(localStorage.character).health-eval(localStorage.character2).power;document.getElementById('health').setAttribute('value',eval(localStorage.character).health);eval(localStorage.character).health=document.getElementById('health').getAttribute('max');character.src=localStorage.character+'/damage1.png';if((parseInt(character2.style.right)-parseInt(character.style.right))==Math.abs(parseInt(character2.style.right)-parseInt(character.style.right))){character.style.transform="scaleX(-1)";character.style.right=parseInt(character.style.right)-20+"px";}else{character.style.transform="scaleX(1)";character.style.right=parseInt(character.style.right)+20+"px";}attack12=false;}}setTimeout(function() {character.src=localStorage.character+'/stance.gif';attack12=false;},400)},500)
+	}
+  if (localStorage.character2=='sasuke'){
+    character2.src=localStorage.character2+"/attack2.gif";
+		setTimeout(function() {character2.src=localStorage.character2+'/stance.gif';if (Math.abs(parseInt(character.style.right)-parseInt(character2.style.right))<=76) {if(localStorage.character=='naruto' && clickedup===false){  eval(localStorage.character).health=document.getElementById('health').value;eval(localStorage.character).health=eval(localStorage.character).health-eval(localStorage.character2).power;document.getElementById('health').setAttribute('value',eval(localStorage.character).health);eval(localStorage.character).health=document.getElementById('health').getAttribute('max');character.src=localStorage.character+'/damage2.png';if(parseInt(character.style.right)<parseInt(character2.style.right)){character.style.transform="scaleX(-1)";character.style.right=parseInt(character.style.right)-20+"px";}}else if(localStorage.character=='sasuke'){eval(localStorage.character).health=document.getElementById('health').value;eval(localStorage.character).health=eval(localStorage.character).health-eval(localStorage.character2).power;document.getElementById('health').setAttribute('value',eval(localStorage.character).health);eval(localStorage.character).health=document.getElementById('health').getAttribute('max');character.src=localStorage.character+'/damage1.png';if((parseInt(character2.style.right)-parseInt(character.style.right))==Math.abs(parseInt(character2.style.right)-parseInt(character.style.right))){character.style.transform="scaleX(-1)";character.style.right=parseInt(character.style.right)-20+"px";}else{character.style.transform="scaleX(1)";character.style.right=parseInt(character.style.right)+20+"px";}attack12=false;}}setTimeout(function() {character.src=localStorage.character+'/stance.gif';attack12=false;},400)},500)
+  }
+	}
+	break;
+case 35:
+if(localStorage.character2=='sasuke'  && sasuke.energy>0){
+  function delayjutsu(){
+  jutsu12=true;
+		sasuke2.energy=sasuke2.energy-2;
+		character2.src=localStorage.character2+'/jutsu.gif'
+    if (Math.abs(parseInt(character.style.right)-parseInt(character2.style.right))<=150) {
+      if(localStorage.character=='naruto' && clickedup===false){
+        eval(localStorage.character).health=document.getElementById('health').value;eval(localStorage.character).health=eval(localStorage.character).health-eval(localStorage.character2).power*3;document.getElementById('health').setAttribute('value',eval(localStorage.character).health);eval(localStorage.character).health=document.getElementById('health').getAttribute('max');character.src=localStorage.character+'/damage1.png';
+        animis2=setInterval(function(){if (Math.abs(parseInt(character.style.right)-parseInt(character2.style.right))<155) {if((parseInt(character2.style.right)-parseInt(character.style.right))==Math.abs(parseInt(character2.style.right)-parseInt(character.style.right))){character.style.transform="scaleX(-1)";character.style.right=parseInt(character.style.right)-30+"px";}else{character.style.transform="scaleX(1)";character.style.right=parseInt(character.style.right)+30+"px";};}else{clearInterval(animis2)}},100)
+      }else if(localStorage.character=='sasuke'){
+        eval(localStorage.character).health=document.getElementById('health').value;eval(localStorage.character).health=eval(localStorage.character).health-eval(localStorage.character2).power*3;document.getElementById('health').setAttribute('value',eval(localStorage.character).health);eval(localStorage.character).health=document.getElementById('health').getAttribute('max');character.src=localStorage.character+'/block.png';
+        animis=setInterval(function(){if(Math.abs(parseInt(character.style.right)-parseInt(character2.style.right))<165) {if((parseInt(character2.style.right)-parseInt(character.style.right))==Math.abs(parseInt(character2.style.right)-parseInt(character.style.right))){character.style.transform="scaleX(-1)";character.style.right=parseInt(character.style.right)-30+"px";}else{character.style.transform="scaleX(1)";character.style.right=parseInt(character.style.right)+30+"px";}}else{clearInterval(animis)}},100)
+      }
+        setTimeout(function() {character.src=localStorage.character+'/stance.gif';jutsu12=false;},1200)
+  }
+setTimeout(function() {if(eval(localStorage.character2+'2').energy>0){character2.src=localStorage.character2+'/stance.gif';}else{character2.src=localStorage.character2+'/dead.gif';document.body.removeEventListener('keydown',keydownfunc);console.log('removed')};jutsu12=false},1000)
+  }
+  if(jutsu12===false && attack12===false && clickedown2===false && clickedup2===false && clickedown===false){
+  setTimeout(delayjutsu,600)
+  }
+}
+break;
+
+case 90:
+if(localStorage.character=='sasuke'  && sasuke.energy>0){
+  function delayjutsu2(){
+  jutsu1=true;
+		sasuke.energy=sasuke.energy-2;
+		character.src=localStorage.character+'/jutsu.gif'
+    character.style.right=parseInt(character.style.right)-80+"px";
+    if (Math.abs(parseInt(character.style.right)-parseInt(character2.style.right))<=150) {
+      if(localStorage.character2=='naruto' && clickedup2===false){
+        eval(localStorage.character2).health=document.getElementById('health2').value;eval(localStorage.character2).health=eval(localStorage.character2).health-eval(localStorage.character).power*3;document.getElementById('health2').setAttribute('value',eval(localStorage.character2).health);eval(localStorage.character2).health=document.getElementById('health2').getAttribute('max');character2.src=localStorage.character2+'/damage1.png';
+        animisF2=setInterval(function(){if (Math.abs(parseInt(character.style.right)-parseInt(character2.style.right))<45) {if(parseInt(character2.style.right)<(parseInt(character.style.right)+80)){character2.style.transform="scaleX(-1)";character2.style.right=parseInt(character2.style.right)-30+"px";}else{character2.style.transform="scaleX(1)";character2.style.right=parseInt(character2.style.right)+30+"px";};}else{clearInterval(animisF2)}},100)
+      }else if(localStorage.character2=='sasuke'){
+        eval(localStorage.character2).health=document.getElementById('health2').value;eval(localStorage.character2).health=eval(localStorage.character2).health-eval(localStorage.character).power*3;document.getElementById('health2').setAttribute('value',eval(localStorage.character2).health);eval(localStorage.character2).health=document.getElementById('health2').getAttribute('max');character2.src=localStorage.character2+'/block.png';
+        animisF=setInterval(function(){if(Math.abs(parseInt(character.style.right)-parseInt(character2.style.right))<55) {if(parseInt(character2.style.right)<(parseInt(character.style.right)+80)){character2.style.transform="scaleX(-1)";character2.style.right=parseInt(character2.style.right)-30+"px";}else{character2.style.transform="scaleX(1)";character2.style.right=parseInt(character2.style.right)+30+"px";}}else{clearInterval(animisF)}},100)
+      }
+        setTimeout(function() {character2.src=localStorage.character2+'/stance.gif';jutsu1=false;},1200)
+  }
+setTimeout(function() {if(eval(localStorage.character).energy>0){ character.style.right=parseInt(character.style.right)+80+"px";character.src=localStorage.character+'/stance.gif';}else{character.src=localStorage.character+'/dead.gif';document.removeEventListener('keydown',keydown2);};jutsu1=false},1000)
+  }
+  if(jutsu1===false && attack1===false && clickedown===false && clickedup===false && clickedown2===false){
+  setTimeout(delayjutsu2,600)
+  }
+}
+
+break;
+case 122:
+if(localStorage.character=='sasuke'  && sasuke.energy>0){
+  function delayjutsu2(){
+  jutsu1=true;
+		sasuke.energy=sasuke.energy-2;
+		character.src=localStorage.character+'/jutsu.gif'
+    character.style.right=parseInt(character.style.right)-80+"px";
+    if (Math.abs(parseInt(character.style.right)-parseInt(character2.style.right))<=150) {
+      if(localStorage.character2=='naruto' && clickedup2===false){
+        eval(localStorage.character2).health=document.getElementById('health2').value;eval(localStorage.character2).health=eval(localStorage.character2).health-eval(localStorage.character).power*3;document.getElementById('health2').setAttribute('value',eval(localStorage.character2).health);eval(localStorage.character2).health=document.getElementById('health2').getAttribute('max');character2.src=localStorage.character2+'/damage1.png';
+        animisF2=setInterval(function(){if (Math.abs(parseInt(character.style.right)-parseInt(character2.style.right))<45) {if(parseInt(character2.style.right)<(parseInt(character.style.right)+80)){character2.style.transform="scaleX(-1)";character2.style.right=parseInt(character2.style.right)-30+"px";}else{character2.style.transform="scaleX(1)";character2.style.right=parseInt(character2.style.right)+30+"px";};}else{clearInterval(animisF2)}},100)
+      }else if(localStorage.character2=='sasuke'){
+        eval(localStorage.character2).health=document.getElementById('health2').value;eval(localStorage.character2).health=eval(localStorage.character2).health-eval(localStorage.character).power*3;document.getElementById('health2').setAttribute('value',eval(localStorage.character2).health);eval(localStorage.character2).health=document.getElementById('health2').getAttribute('max');character2.src=localStorage.character2+'/block.png';
+        animisF=setInterval(function(){if(Math.abs(parseInt(character.style.right)-parseInt(character2.style.right))<55) {if(parseInt(character2.style.right)<(parseInt(character.style.right)+80)){character2.style.transform="scaleX(-1)";character2.style.right=parseInt(character2.style.right)-30+"px";}else{character2.style.transform="scaleX(1)";character2.style.right=parseInt(character2.style.right)+30+"px";}}else{clearInterval(animisF)}},100)
+      }
+        setTimeout(function() {character2.src=localStorage.character2+'/stance.gif';jutsu1=false;},1200)
+  }
+setTimeout(function() {if(eval(localStorage.character).energy>0){ character.style.right=parseInt(character.style.right)+80+"px";character.src=localStorage.character+'/stance.gif';}else{character.src=localStorage.character+'/dead.gif';document.removeEventListener('keydown',keydown2);};jutsu1=false},1000)
+  }
+  if(jutsu1===false && attack1===false && clickedown===false && clickedup===false && clickedown2===false){
+  setTimeout(delayjutsu2,600)
+  }
+}
+
+break;
+case 96:
+document.write('<h1 style="background-color: aqua;border-left: 8px solid blue;">Turn off Nums lock!Error 103</h1><button style="position: fixed;bottom: 0%;right: 50%;background-color:black" id="homeis"><img src="home.png"alt="home"></button>')
+document.getElementById('homeis').addEventListener('click',function() {window.open('index.htm','_self')})
+break;
+case 97:
+document.write('<h1 style="background-color: aqua;border-left: 8px solid blue;">Turn off Nums lock!Error 103</h1><button style="position: fixed;bottom: 0%;right: 50%;background-color:black" id="homeis"><img src="home.png"alt="home"></button>')
+document.getElementById('homeis').addEventListener('click',function() {window.open('index.htm','_self')})
+break;
+case 98:
+document.write('<h1 style="background-color: aqua;border-left: 8px solid blue;">Turn off Nums lock!Error 103</h1><button style="position: fixed;bottom: 0%;right: 50%;background-color:black" id="homeis"><img src="home.png"alt="home"></button>')
+document.getElementById('homeis').addEventListener('click',function() {window.open('index.htm','_self')})
+break;
+case 99:
+document.write('<h1 style="background-color: aqua;border-left: 8px solid blue;">Turn off Nums lock!Error 103</h1><button style="position: fixed;bottom: 0%;right: 50%;background-color:black" id="homeis"><img src="home.png"alt="home"></button>')
+document.getElementById('homeis').addEventListener('click',function() {window.open('index.htm','_self')})
+break;
+case 100:
+document.write('<h1 style="background-color: aqua;border-left: 8px solid blue;">Turn off Nums lock!Error 103</h1><button style="position: fixed;bottom: 0%;right: 50%;background-color:black" id="homeis"><img src="home.png"alt="home"></button>')
+document.getElementById('homeis').addEventListener('click',function() {window.open('index.htm','_self')})
+break;
+case 101:
+document.write('<h1 style="background-color: aqua;border-left: 8px solid blue;">Turn off Nums lock!Error 103</h1><button style="position: fixed;bottom: 0%;right: 50%;background-color:black" id="homeis"><img src="home.png"alt="home"></button>')
+document.getElementById('homeis').addEventListener('click',function() {window.open('index.htm','_self')})
+break;
+case 102:
+document.write('<h1 style="background-color: aqua;border-left: 8px solid blue;">Turn off Nums lock!Error 103</h1><button style="position: fixed;bottom: 0%;right: 50%;background-color:black" id="homeis"><img src="home.png"alt="home"></button>')
+document.getElementById('homeis').addEventListener('click',function() {window.open('index.htm','_self')})
+break;
+case 103:
+document.write('<h1 style="background-color: aqua;border-left: 8px solid blue;">Turn off Nums lock!Error 103</h1><button style="position: fixed;bottom: 0%;right: 50%;background-color:black" id="homeis"><img src="home.png"alt="home"></button>')
+document.getElementById('homeis').addEventListener('click',function() {window.open('index.htm','_self')})
+break;
+case 105:
+document.write('<h1 style="background-color: aqua;border-left: 8px solid blue;">Turn off Nums lock!Error 103</h1><button style="position: fixed;bottom: 0%;right: 50%;background-color:black" id="homeis"><img src="home.png"alt="home"></button>')
+document.getElementById('homeis').addEventListener('click',function() {window.open('index.htm','_self')})
+break;
+case 104:
+document.write('<h1 style="background-color: aqua;border-left: 8px solid blue;">Turn off Nums lock!Error 103</h1><button style="position: fixed;bottom: 0%;right: 50%;background-color:black" id="homeis"><img src="home.png"alt="home"></button>')
+document.getElementById('homeis').addEventListener('click',function() {window.open('index.htm','_self')})
+break;
+
+}
+}
+//main game
+setInterval(function(){if(parseInt(character.style.right)<0){character.style.right='0px'}else if(parseInt(character.style.right)>(window.innerWidth-70)){character.style.right=(window.innerWidth-70)+'px'};if(parseInt(character2.style.right)<0){character2.style.right='0px'}else if(parseInt(character2.style.right)>(window.innerWidth-70)){character2.style.right=(window.innerWidth-70)+'px'}},1)
+setInterval(function() {if(eval(localStorage.character).energy<limitchar && document.getElementById('chakra')!=null){eval(localStorage.character).energy=eval(localStorage.character).energy+0.125;document.getElementById('chakra').setAttribute('value',eval(localStorage.character).energy);}if(eval(localStorage.character2+'2').energy<limitchar2 && document.getElementById('chakra2')!=null){eval(localStorage.character2+'2').energy=eval(localStorage.character2+'2').energy+0.125;document.getElementById('chakra2').setAttribute('value',eval(localStorage.character2+'2').energy)};if (eval(localStorage.character).energy>0 && eval(localStorage.character).health>0) {document.addEventListener('keydown',keydown2);}if (eval(localStorage.character2+'2').energy>0 && eval(localStorage.character2+'2').health>0) {document.body.addEventListener('keydown',keydownfunc);};if (document.getElementById('health2').value<=0) {document.write('<div align="center"><h1 class="arca">Game over</h1></div><h1 style="background-color: aqua;border-left: 8px solid blue;">Player 1 '+localStorage.character+' has won</h1><hr><h1 style="background-color: aqua;border-left: 8px solid blue;">Money:+1000$</h1><button style="position: fixed;bottom: 0%;right: 50%;background-color:black" id="homeis"><img src="home.png"alt="home"></button>');localStorage.cash=parseInt(localStorage.cash)+1000;document.getElementById('homeis').addEventListener('click',function() {window.open('index.htm','_self')})};if (document.getElementById('health').value<=0) {document.write('<div align="center"><h1 class="arca">Game over</h1></div><h1 style="background-color: aqua;border-left: 8px solid blue;">Player 2 '+localStorage.character2+' has won</h1><hr><h1 style="background-color: aqua;border-left: 8px solid blue;">Money:+1000$</h1><button style="position: fixed;bottom: 0%;right: 50%;background-color:black" id="homeis"><img src="home.png"alt="home"></button>');localStorage.cash=parseInt(localStorage.cash)+1000;document.getElementById('homeis').addEventListener('click',function() {window.open('index.htm','_self')})};},1000)
+</script>
+</body>
+</html>

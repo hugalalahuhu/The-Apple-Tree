@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Data</title>
+	<link rel="stylesheet" type="text/css" href="snow.css">
+</head>
+<body>
+	
+<style>
+	body{
+		background-image: linear-gradient(135deg, #9796f0 10%, #FBC7D4 100%);
+		background-size: cover;
+		background-attachment: fixed;
+	}
+</style>
+	<h1 style="font-family: fantasy;" align="center" id="demo"></h1>
+	<hr>
+	<div align="center">
+	<iframe src="account.html" align="center"></iframe>
+	</div>
+	<div style="width:400px;position: absolute;right: 35%;">
+	<p id="par" style="font-family:fantasy;"></p>
+</div>
+	<h1 id="bye" style="position: fixed;bottom: 0%;"></h1>
+<script type="text/javascript">
+	i=0
+	let txt='Welcome'
+	len=0;
+	let welcometext= "It took a lot of hard work and time to make this. So, it makes me truly happy. As a token of gratitude, I advise you to reconsider your life choices. With this,your account has been created. You will be prompted back to the home page soon and we will win the science competition."
+	let byebyetext="Until we meet again...."
+	gb=0
+	function typeWriter() {
+  if (i < txt.length) {
+    document.getElementById("demo").innerHTML += txt.charAt(i);
+    i++;
+    setTimeout(typeWriter, 150);
+  }else{
+  	parstart()
+  }
+}
+function parstart() {
+if (len < welcometext.length) {
+    document.getElementById("par").innerHTML +=welcometext.charAt(len);
+    len++;
+    setTimeout(parstart, 100);
+  }else{
+  	byebye()
+  }
+}
+function byebye() {
+	if (gb < byebyetext.length) {
+    document.getElementById("bye").innerHTML +=byebyetext.charAt(gb);
+    gb++;
+    setTimeout(byebye, 200);
+  }else{
+  	window.open('index.htm','_self')
+  }
+}
+typeWriter()
+</script>
+</body>
+</html>              

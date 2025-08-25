@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" type="text/css" href="snow.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<title>Settings</title>
+</head>
+<body style="background-image: url('bg2.jpg');background-size: cover;">
+<button class="button2" id="loggg" style="position:fixed;top: 0%;right: 0%;" onclick="window.open('form.html','_self')">LOG IN</button>
+<script type="text/javascript">
+	function cleardata() {
+		confirm('Are you sure, you cannot restore the data after clearing it.')
+		if (confirm('Are you sure, you cannot restore the data after clearing it.')===true) {
+			localStorage.clear()
+			alert('Done')
+		}
+	}
+	document.getElementById('loggg').innerHTML=localStorage.accountname;
+</script>
+<button onclick="cleardata()" class="button noice">Clear data  <i class="fa fa-trash-o"></i></button>
+<hr>
+<button onclick="window.open('index.htm','_self')" style="position: fixed;bottom: 0%;right: 50%;" class="btn"><img src="home.png"> HOME</button>
+<div onmouseleave="document.getElementById('tros').style.visibility='hidden';document.getElementById('storyline').style.visibility='hidden';document.getElementById('control').style.visibility='hidden';">
+<button onmouseenter="document.getElementById('tros').style.visibility='visible';document.getElementById('storyline').style.visibility='visible';document.getElementById('control').style.visibility='visible';" class="button noice"><i class="fa fa-bars"></i> Help</button><hr>
+<button id="tros" class="btn" onclick="document.getElementById('troubleshooto').style.visibility='visible';document.getElementById('embe').src='troubleshoot.htm';" style="visibility:hidden;"> Troubleshoot</button>
+<button id="storyline" class="btn" onclick="document.getElementById('troubleshooto').style.visibility='visible';document.getElementById('embe').src='storyline.htm';" style="visibility:hidden;"> Storyline</button>
+<button class="btn" id="control" onclick="document.getElementById('troubleshooto').style.visibility='visible';document.getElementById('embe').src='controls.htm';" style="visibility:hidden;" >Controls</button>
+</div>
+<button class="button noice" id="changelog" onclick="document.getElementById('troubleshooto').style.visibility='visible';document.getElementById('embe').src='changelog.htm';">Changelog</button>
+<div id="troubleshooto" class="alert" style="visibility: hidden;">
+<span class="closebtn" onclick="this.parentElement.style.visibility='hidden';" >&times;</span>
+<iframe id="embe" height="450" width="500" style="float: right;"></iframe>
+</div>
+<hr>
+<button class="button noice" onclick="alert('Get lost weird stalker')">Contacts</button>
+<hr>
+<button class="button noice" onclick="alert('Rqst me for the source code')">Download <i class="fa fa-download"></i></button>
+</a>
+</body>
+</html>

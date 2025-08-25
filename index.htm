@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>The Apple Tree</title>
+	<link href='https://fonts.googleapis.com/css?family=Press Start 2P' rel='stylesheet'>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" type="text/css" href="snow.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+	<link rel="shortcut icon" type="image/x-icon" href="tree.png.gif" />
+</head>
+<body id="bruh">
+<script>
+	$(document).ready(function() {
+			$("#helpiscumming").click(function() {
+				window.open('settings.html','_self')
+
+		})
+	})
+	bak=0
+</script>
+<style type="text/css">
+	#bruh{
+		background-image: url("tree.png.gif");
+		background-size: 60%;
+		background-position:50% 2%;
+		background-repeat: no-repeat;
+		background-color: #ff8500;
+	}
+	.arca{
+		font-family: "Press Start 2P";
+	}
+  .backg:hover{
+  	border:solid 6px lime;
+  }
+</style>
+<h2  align="center" class="arca">THE APPLE TREE</h2>
+<p class="arca">Press the play button to begin</p> 
+<p class="arca">This game was indeed developed by Icelet</p>
+<h1 class="arca" style="position: absolute;bottom: 20%;color: white" id="inspiwa" align="center"></h1>
+<div style="opacity:0%;background-color: white;color: white;position: absolute;bottom:2%;width: 0px;height:30px;border:dotted 3px black" id="loading"><div align="center"><i id="loadingset" class="fa fa-gear fa-spin" style="color: black;font-size: 28px;"></i></div></div>
+<p class="arca">It took 3 entire months to make this and its still not complete.</p>
+<ul type="square">
+<div onmouseleave="document.getElementById('Starbutt').style.visibility='hidden';document.getElementById('Starbutt2').style.visibility='hidden';">
+<table>
+	<tr>
+<td>
+	<li>
+<button class="arca button noice" onmouseover="document.getElementById('Starbutt').style.visibility='visible';document.getElementById('Starbutt2').style.visibility='visible';">PLAY</button></li>
+</td>
+		<td>
+<button id="Starbutt"class="arca btn" onclick="Starplay()" style="visibility: hidden;">PvP</button>
+</td>
+<td>
+<button id="Starbutt2"class="arca btn" onclick="Starplay2()" style="visibility: hidden;"> STORYLINE</button>
+</td>
+</tr>
+</table>
+</div>
+<li><button id="helpiscumming"class="arca button noice"><i class="fa fa-gear" style="font-size: 20px;"></i>SETTINGS</button></li>
+</ul>
+<div class="arca" id="bruhok" style="background-color: blue;width:250px;position: absolute;right: 1.75%;top:2.5%;border:solid black 2px;height: 15px">0</div>
+<button class="arca button2 noice" id="loggg" style="position:absolute;right: 5%;top: 6%;" onclick="loggingop()">LOG IN</button>
+<table id="charsel" style="position: absolute;right:20%;top: 25%;" border="double 4px black">
+	<tr>
+		<td colspan="4"><p class="arca">Character 2</p></td>
+	</tr>
+	<tr>
+		<td class="backg" id="naruto2"onclick="localStorage.character2='naruto';document.getElementById('sasuke2').style.backgroundColor='transparent';">
+			<img src="naruto/icon.png"width='60'>
+		</td>
+		<td class="backg" id="sasuke2" onclick="if(JSON.parse(localStorage.buy).characters.includes('sasuke')){document.getElementById('lock2').remove();localStorage.character2='sasuke';document.getElementById('naruto2').style.backgroundColor='transparent';}else{alert('Purchase more from the shop')}">
+			<img src="sasuke/icon.png" width="60" style="z-index:-1;"><img src="misc/lock.jpg" id="lock2" width=20>
+		</td>
+	</tr>
+</table>
+<table id="charsel2" style="position: absolute;right:35%;top: 25%;" border="double 4px black">
+	<tr>
+		<td colspan="4"><p class="arca">Character 1</p></td>
+	</tr>
+	<tr>
+		<td class="backg" id="naruto"onclick="localStorage.character='naruto';document.getElementById('sasuke').style.backgroundColor='transparent';">
+			<img src="naruto/icon.png"width='60'>
+		</td>
+		<td class="backg" id="sasuke" onclick="if(JSON.parse(localStorage.buy).characters.includes('sasuke')){document.getElementById('lock').remove();localStorage.character='sasuke';document.getElementById('naruto').style.backgroundColor='transparent';}else{alert('Purchase it from the shop')}">
+			<img src="sasuke/icon.png" width="60" style="z-index:-1;"><img src="misc/lock.jpg" id="lock" width="20">	
+		</td>
+	</tr>
+</table>
+<table id="bgsel" style="position: absolute;right:5%;top: 25%;" border="double 4px black">
+	<tr>
+		<td colspan="4"><p class="arca">BACKGROUND</p></td>
+	</tr>
+</table>
+<script type="text/javascript">
+	document.getElementById('loggg').innerHTML=localStorage.accountname;
+	//debug area
+	if (localStorage.accountname==undefined) {         
+	localStorage.accountname='LOG IN';
+	document.getElementById('loggg').innerHTML=localStorage.accountname;
+    }
+	console.log(JSON.parse(localStorage.buy).characters.includes('sasuke'))
+    if (localStorage.cash==undefined || parseInt(localStorage.cash)==NaN) {
+                  localStorage.cash='0';
+                  money=localStorage.cash;
+              }
+    else{money=localStorage.cash;}
+    if (localStorage.buy==null||localStorage.buy==undefined) {
+    	var purchase={backgrounds:['academy.png'],characters:['naruto']};
+    	localStorage.setItem('buy',JSON.stringify(purchase))
+    }
+	var ins=['“War brings death. And wounds and pain to both sides. There’s nothing harder to accept, than the deaths of those you love. So you believe they could never die. Especially those who haven’t known war.” – Nagato','“The concept of hope is nothing more than giving up. A word that holds no true meaning.” – Madara Uchiha','“The longer you live… The more you realize that reality is just made of pain, suffering and emptiness.” – Madara Uchiha','“Love is not necessary, power is the only true necessity.” – Madara Uchiha','“When a man learns to love, he must bear the risk of hatred.” – Madara Uchiha','“Power is not will, it is the phenomenon of physically making things happen.” – Madara Uchiha','“I’d be lying if I said things are going according to my plan… but beggars can’t be choosers, right?” – Madara Uchiha','“In this world, wherever there is light – there are also shadows. As long as the concept of winners exists, there must also be losers. The selfish desire of wanting to maintain peace causes wars, and hatred is born to protect love.” – Madara Uchiha','“Man seeks peace, yet at the same time yearning for war… Those are the two realms belonging solely to man. Thinking of peace whilst spilling blood is something that only humans could do. They’re two sides of the same coin… to protect something… another must be sacrificed.” – Madara Uchiha','“People cannot show each other their true feelings. Fear, suspicion, and resentment never subside.” – Madara Uchiha','“Wake up to reality! Nothing ever goes as planned in this world. The longer you live, the more you realize that in this reality only pain, suffering and futility exist.” – Madara Uchiha','“Never give up without even trying. Do what you can, no matter how small the effect it may have!” – Onoki','“It is only through the eyes of others that our lives have any meaning.” – Haku','“When people are protecting something truly precious to them. They truly can become…as strong as they need to be!” – Haku','“Often people have it wrong, mistakenly believing… that showing mercy to an enemy is kindness. They spare the foe whose life is in their hands. But don’t you see? It’s an empty existence, to go on living… alone and unloved… when defeat’s already cost you your dream!” – Haku','“Rejection is a part of any man’s life. If you can’t accept and move past rejection, or at least use it as writing material – you’re not a real man.” – Jiraiya','“A person grows up when he’s able to overcome hardships. Protection is important, but there are some things that a person must learn on his own.” – Jiraiya','“A place where someone still thinks about you is a place you can call home.” – Jiraiya','“You’re wrong, that’s not what makes a shinobi. You never did get it, a real ninja is one who endures no matter what gets thrown at him… Let me explain something to you, there is only one thing that matters if you are a shinobi, and it isn’t the number of jutsu you possess. All you do need, is the guts to never give up.” – Jiraiya','“When people get hurt, they learn to hate… When people hurt others, they become hated and racked with guilt. But knowing that pain allows people to be kind. Pain allows people to grow… and how you grow is up to you.” – Jiraiya','“Even I can tell that hatred is spreading. I wanted to do something about it…but I don’t know what. I believe… that someday the day will come when people truly understand one another!” – Jiraiya','“Hard work is worthless for those that don’t believe in themselves.” – Naruto Uzumaki','“Because they saved me from myself, they rescued me from my loneliness. They were the first to accept me for who I am. They’re my friends.” – Naruto Uzumaki','“I want to be with you. From now on, I want to spend all and every single one of my days until I die with you, and only you.” – Naruto Uzumaki']
+	function tog() {
+			if (document.getElementById('inspiwa').style.visibility=="visible") {
+				document.getElementById('inspiwa').style.visibility="hidden";
+			}
+			 else{
+			 	document.getElementById('inspiwa').style.visibility="visible";
+			 }
+		}
+		document.getElementById('bruhok').innerHTML=money+'$';
+		function Starplay(){
+			if (localStorage.accountname!='LOG IN') {
+			if (localStorage.character!='' && localStorage.character2!='' & localStorage.character!=undefined & localStorage.character2!=undefined) {
+			document.getElementById('loading').style.opacity="100%"
+			document.getElementById('Starbutt').disabled=true;
+			sessionStorage.playload=true;
+			var nong=Math.floor(Math.random() * ins.length);	
+		    document.getElementById('inspiwa').innerHTML=ins[nong];
+		    const toggg=setInterval(tog,1500);
+		    setTimeout(function() {clearInterval(toggg);document.getElementById('inspiwa').innerHTML="";document.getElementById('Starbutt').disabled=false;clearInterval(loadingproc);window.open("play.htm",'_self')},9000)
+		   const loadingproc=setInterval(function() {if(parseInt(document.getElementById('loading').style.width)<(window.innerWidth)){console.log(window.outerWidth);document.getElementById('loading').style.width=parseInt(document.getElementById('loading').style.width)+5+"px";}},20)
+		   document.getElementById('charsel').style.visibility="hidden";
+		   document.getElementById('charsel2').style.visibility="hidden";
+		   document.getElementById('bgsel').style.visibility="hidden";
+		}
+		else{alert('Select any 2 characters to begin.')}
+	}
+		else{alert('Login to begin')}
+	}
+  function Starplay2(){
+			if (localStorage.accountname!='LOG IN') {
+			if (localStorage.character!='' && localStorage.character2!='' && localStorage.character!=undefined && localStorage.character2!=undefined) {
+			document.getElementById('loading').style.opacity="100%"
+			document.getElementById('Starbutt2').disabled=true;
+			sessionStorage.playload=true;
+			var nong=Math.floor(Math.random() * ins.length);	
+		    document.getElementById('inspiwa').innerHTML=ins[nong];
+		    const toggg=setInterval(tog,1000);
+		    setTimeout(function() {clearInterval(toggg);document.getElementById('inspiwa').innerHTML="";document.getElementById('Starbutt').disabled=false;clearInterval(loadingproc);window.open("RPG/playstory.htm",'_self')},9000)
+		   const loadingproc=setInterval(function() {if(parseInt(document.getElementById('loading').style.width)<(window.innerWidth)){document.getElementById('loading').style.width=parseInt(document.getElementById('loading').style.width)+5+"px";}},20)
+		   document.getElementById('charsel').style.visibility="hidden";
+		   document.getElementById('charsel2').style.visibility="hidden";
+		   document.getElementById('bgsel').style.visibility="hidden";
+		}
+		else{alert('Select any 2 characters to begin.')}
+	}
+		else{alert('Login to begin')}
+	}
+	function loggingop() {
+		window.open('form.html','_self')
+	}
+	oleole=0
+	function addcolumn() {
+	var row = document.createElement("tr");
+  var cont = document.createElement("td");
+  cont.height=80
+  var datais=new Image()
+  datais.src=JSON.parse(localStorage.buy).backgrounds[bak]
+  datais.width=170
+  cont.setAttribute('id',JSON.parse(localStorage.buy).backgrounds[bak])
+  cont.setAttribute('class','backg')
+  cont.addEventListener('click',function() {localStorage.background=cont.id;})
+  cont.appendChild(datais)
+  row.appendChild(cont);
+  var table = document.getElementById("bgsel");
+  table.appendChild(row)
+}
+setInterval(function() {document.getElementById(localStorage.character).style.backgroundColor="aqua";},1 )
+setInterval(function() {document.getElementById(localStorage.character2+"2").style.backgroundColor="green";},1)
+setInterval(function() {document.getElementById(localStorage.background).style.backgroundColor="blue";},1)
+while(bak<JSON.parse(localStorage.buy).backgrounds.length){
+addcolumn()
+bak+=1
+}
+function finallydone() {
+if (JSON.parse(localStorage.buy).backgrounds.length==bak||localStorage.buy==null) {
+	var row = document.createElement("button");
+	row.style.backgroundColor='Green'
+	var mcont=document.createElement('div')
+	var cont=document.createElement('b')
+	cont.style.color='white'
+	var datais=document.createTextNode('Buy more>>')
+	mcont.setAttribute('align','center')
+	mcont.appendChild(cont)
+	cont.appendChild(datais)
+	row.setAttribute('class','button noice')
+	row.appendChild(mcont)
+	row.addEventListener('click',function() {window.open('shop.html','_self')})
+	row.style.width='100%'
+	document.getElementById("bgsel").appendChild(row)
+}else{setTimeout(finallydone,1000)}
+}
+finallydone()
+
+setInterval(function(){if(oleole<JSON.parse(localStorage.buy).backgrounds.length){if (JSON.parse(localStorage.buy).backgrounds[oleole]==localStorage.background) {oleole+=1}else{document.getElementById(JSON.parse(localStorage.buy).backgrounds[oleole]).style.backgroundColor='transparent';oleole+=1}}else{oleole=0}},1)
+</script>
+</body>
+</html>          

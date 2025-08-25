@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+    <head>
+	<link href='https://fonts.googleapis.com/css?family=Press Start 2P' rel='stylesheet'>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+        <title>The Apple Tree</title>
+    </head>
+    <body style="padding: 0%;">
+<style>
+    .grid-container {
+      display:grid;
+      grid-template-columns: auto auto auto;
+      width: 99vw;
+      height: 98vh;
+      padding: 0%;
+      margin: 0%;
+      grid-template-columns: 11fr 1fr 1fr 1fr ;
+      grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    }
+    
+    .grid-container > div {
+      font-size: 30px;
+      text-align: center;
+    }
+    .button {
+      padding: 15px 25px;
+      font-size: 24px;
+      text-align: center;
+      cursor: pointer;
+      outline: none;
+      color: #fff;
+      background-color: #04AA6D;
+      border: none;
+      border-radius: 15px;
+      box-shadow: 0 9px #999;
+      width: auto;
+      height: auto;
+    }
+    
+    .button:hover {background-color: #3e8e41}
+    
+    .button:active {
+      background-color: #3e8e41;
+      box-shadow: 0 5px #666;
+      transform: translateY(4px);
+    }
+    .grid-item1{
+      grid-row: span 11;
+    }
+    .grid-item2{
+      grid-column: 3/4;
+      grid-row: 3;
+    }
+    .grid-item3{
+      grid-column: 2/3;
+      grid-row: 4;
+    }
+    .grid-item4{
+      grid-column: 3/4;
+      grid-row: 4;
+    }
+    .grid-item5{
+      grid-column: 4/5;
+      grid-row: 4;
+    }
+    .grid-item6{
+      grid-column: 3/4;
+      grid-row: 5;
+    }
+    #canvas1{
+      width:85vw;
+      height:85vh;
+    }
+    </style>
+    <body>
+    <div class="grid-container">
+      <div class="grid-item1"><canvas style="border: 1px solid;box-sizing: border-box;" id="canvas1"></canvas></div> 
+      <div class="grid-item2"><button class="button" id="up">↑</button></div>
+      <div class="grid-item3"><button class="button" id="left">←</button></div>
+      <div class="grid-item4"><button class="button" id="interact">I</button></div>
+      <div class="grid-item5"><button class="button" id="right">→ </button></div>  
+      <div class="grid-item6"><button class="button" id="down">↓</button></div>
+    </div>    
+<script src="variables.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script src="world.js"></script>
+<script>
+</script>
+</body>
+</html>
