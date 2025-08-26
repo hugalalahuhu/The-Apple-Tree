@@ -7,13 +7,31 @@
 	<link rel="stylesheet" type="text/css" href="snow.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 	<link rel="shortcut icon" type="image/x-icon" href="tree.png.gif" />
+	<meta name="description" content="Icelet's website.">
+	<meta name="keywords" content="Icelet, Nepal, Student">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="robots" content="index, follow">
+	<link rel="canonical" href="https://www.icelet.com.np/">
 </head>
 <body id="bruh">
 <script>
 	$(document).ready(function() {
 			$("#helpiscumming").click(function() {
-				window.open('settings.html','_self')
-
+				window.open('settings.html','_self');
+				if (navigator.userAgentData) {
+    if(navigator.userAgentData.mobile){
+		document.write("NOT SUPPORTED FOR MOBILE.<br><iframe width="560" height="315" 
+  src="https://www.youtube.com/embed/dQw4w9WgXcQ?si=8HW81Mw7i39Exwue&start=1&autoplay=1&mute=1" 
+  title="YouTube video player" 
+  frameborder="0" 
+  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+  referrerpolicy="strict-origin-when-cross-origin" 
+  allowfullscreen>
+</iframe>
+")
+} else {
+  // Fallback to userAgent regex
+}
 		})
 	})
 	bak=0
@@ -25,6 +43,7 @@
 		background-position:50% 2%;
 		background-repeat: no-repeat;
 		background-color: #ff8500;
+		overflow: hidden;
 	}
 	.arca{
 		font-family: "Press Start 2P";
