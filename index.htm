@@ -16,9 +16,7 @@
 <body id="bruh">
 <script>
 	$(document).ready(function() {
-			$("#helpiscumming").click(function() {
-				window.open('settings.html','_self');
-				if (navigator.userAgentData) {
+		if (navigator.userAgentData) {
     if(navigator.userAgentData.mobile){
 		document.write('NOT SUPPORTED FOR MOBILE.<br><iframe width="560" height="315" src="https://www.youtube.com/embed/dQw4w9WgXcQ?si=8HW81Mw7i39Exwue&start=1&autoplay=1&mute=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>')
 } else {
@@ -30,7 +28,10 @@ if (isMobileDevice()) {
   document.write('NOT SUPPORTED FOR MOBILE.<br><iframe width="560" height="315" src="https://www.youtube.com/embed/dQw4w9WgXcQ?si=8HW81Mw7i39Exwue&start=1&autoplay=1&mute=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>');
 }
 }
-		})
+		}
+			$("#helpiscumming").click(function() {
+				window.open('settings.html','_self');
+				)
 	})
 	bak=0;
 </script>
