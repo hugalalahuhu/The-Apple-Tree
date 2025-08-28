@@ -16,24 +16,13 @@
 <body id="bruh">
 <script>
 	$(document).ready(function() {
-		if (navigator.userAgentData) {
-    if(navigator.userAgentData.mobile){
-		document.write('NOT SUPPORTED FOR MOBILE.<br><iframe width="560" height="315" src="https://www.youtube.com/embed/dQw4w9WgXcQ?si=8HW81Mw7i39Exwue&start=1&autoplay=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>')
-} else {
-  function isMobileDevice() {
-  return /Mobi|Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-}
-
-if (isMobileDevice()) {
-  document.write('NOT SUPPORTED FOR MOBILE.<br><iframe width="560" height="315" src="https://www.youtube.com/embed/dQw4w9WgXcQ?si=8HW81Mw7i39Exwue&start=1&autoplay=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>');
-}
-}
-		}
 			$("#helpiscumming").click(function() {
 				window.open('settings.html','_self');
-
-			}
-				)
+			})
+		document.write("<button id='HEHEBOY'>Don't click me</button><video id='neheboy'><source src='Untitled video - Made with Clipchamp (14).mp4'></video>");
+		$("#HEHEBOY").click(function(){
+			$("#neheboy").play();
+		})
 	})
 	bak=0;
 </script>
