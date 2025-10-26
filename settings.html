@@ -9,16 +9,7 @@
 </head>
 <body style="background-image: url('bg2.jpg');background-size: cover;">
 <button class="button2" id="loggg" style="position:fixed;top: 0%;right: 0%;" onclick="window.open('form.html','_self')">LOG IN</button>
-<script type="text/javascript">
-	function cleardata() {
-		confirm('Are you sure, you cannot restore the data after clearing it.')
-		if (confirm('Are you sure, you cannot restore the data after clearing it.')===true) {
-			localStorage.clear()
-			alert('Done')
-		}
-	}
-	document.getElementById('loggg').innerHTML=localStorage.accountname;
-</script>
+
 <button onclick="cleardata()" class="button noice">Clear data  <i class="fa fa-trash-o"></i></button>
 <hr>
 <button onclick="window.open('index.htm','_self')" style="position: fixed;bottom: 0%;right: 50%;" class="btn"><img src="home.png"> HOME</button>
@@ -36,7 +27,20 @@
 <hr>
 <button class="button noice" onclick="alert('Get lost weird stalker')">Contacts</button>
 <hr>
-<button class="button noice" onclick="alert('Rqst me for the source code')">Download <i class="fa fa-download"></i></button>
-</a>
+<button class="button noice" onclick="alert('Rqst me for the source code')" id="don1" style="visibility: hidden;"><a href='download.zip' download>Download </a><i class="fa fa-download"></i></button>
+<script type="text/javascript">
+	function cleardata() {
+		confirm('Are you sure, you cannot restore the data after clearing it.')
+		if (confirm('Are you sure, you cannot restore the data after clearing it.')===true) {
+			localStorage.clear()
+			alert('Done')
+		}
+	}
+	document.getElementById('loggg').innerHTML=localStorage.accountname;
+	if(localStorage.accountname=="ICELET"){
+		console.log('hi');
+		document.getElementById('don1').style.visibility='visible';
+	}
+</script>
 </body>
 </html>
