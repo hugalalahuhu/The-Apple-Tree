@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>The apple tree</title>
+	<link rel="stylesheet" href="./style.css">
+	<link rel="stylesheet" href="./snow.css">
+</head>
+<body class="body" style="font-family: sans-serif;">
+<style>
+	.body{
+		background: linear-gradient(90deg, #1CB5E0 0%, #000851 100%);
+	}
+	table{
+		border-spacing: 30px;
+		position: absolute;
+		z-index:1;
+		width:100%;
+		height: 100%;
+	}
+	td{
+		opacity: 60%;
+		width: 300px;
+		height:300px;
+		border-radius:10%;
+		border: 1px solid black;
+		background-color: white;
+		font-size: small;
+	}
+	td:hover{
+		border: 5px solid black;
+        transition: .5s;
+	}
+	.wrapper{
+		z-index:-1;
+		position: fixed;
+		bottom:0%;
+	}
+	h1{
+		background-color: aqua;
+		border-left: 8px solid blue;
+		
+	}
+	tr{
+		height: 600px;
+		overflow-y: auto;
+	}
+</style>
+<div class="arca" id="bruhok" style="background-color: blue;width:250px;position: fixed;right: 1.75%;top:2.5%;border:solid black 2px;height: 15px">0</div>
+<table id="tablu">
+	<tr id="tru">
+		<td style="background-image: url('background.png'); background-size: cover;">
+			<h1 width="300">Moonlight<br>5,000$</h1>
+		</td>
+		<td style="background-image: url('bg2.jpg'); background-size: cover;">
+			<h1 width="300">Sunshine<br>5,000$</h1>
+		</td>
+		<td style="background-image: url('konohabg2.png'); background-size: cover;">
+			<h1 width="300">Konoha<br>5,000$</h1>
+		</td>
+		<td style="background-image: url('konohabg.png'); background-size: cover;">
+			<h1 width="300">Konohagakure<br>5,000$</h1>
+		</td>
+		<td style="background-image: url('bat_bg_09001_a.png'); background-size: cover;">
+			<h1 width="300">Dojo<br>5,000$</h1>
+		</td>
+	</tr>
+	<tr>
+		<td style="background-image: url('bat_bg_09001_b.png'); background-size: cover;">
+			<h1 width="300">Dojo2<br>5,000$</h1>
+		</td>
+		<td style="background-image: url('bat_bg_09001_c.png'); background-size: cover;">
+			<h1 width="300">Dojo3<br>5,000$</h1>
+		</td>
+		<td style="background-image: url('bat_bg_09002_a.png'); background-size: cover;">
+			<h1 width="300">Arena<br>5,000$</h1>
+		</td>
+		<td style="background-image: url('bat_bg_09002_b.png'); background-size: cover;">
+			<h1 width="300">Arena2<br>5,000$</h1>
+		</td>
+		<td style="background-image: url('bat_bg_09002_c.png'); background-size: cover;">
+			<h1 width="300">Arena3<br>5,000$</h1>
+		</td>
+	</tr>
+	<tr>
+		<td style="background-image: url('bat_bg_09006_c.png'); background-size: cover;">
+			<h1 width="300">Rooftop<br>5,000$</h1>
+		</td>
+		<td style="background-image: url('bat_bg_09004_a.png'); background-size: cover;">
+			<h1 width="300">Rooftop1<br>5,000$</h1>
+		</td>
+		<td style="background-image: url('bat_bg_09004_b.png'); background-size: cover;">
+			<h1 width="300">Rooftop2<br>5,000$</h1>
+		</td>
+		<td style="background-image: url('bat_bg_09004_c.png'); background-size: cover;">
+			<h1 width="300">Rooftop3<br>5,000$</h1>
+		</td>
+		<td style="background-image: url('bat_bg_09005_a.png'); background-size: cover;">
+			<h1 width="300">Mansion<br>5,000$</h1>
+		</td>
+	</tr>
+	<tr>
+		<th colspan="5">
+		<h1>Premium background</h1>
+	</th>
+	</tr>
+		<td class="premium" style="background-image: url('Brick.png'); background-size: cover;">
+			<h1 width="300">School<br>50,000$</h1>
+		</td>
+		<td class="premium" class="premium" style="background-image: url('Bridge.png'); background-size: cover;">
+			<h1 width="300">Bridge<br>50,000$</h1>
+		</td>
+		<td class="premium" style="background-image: url('Castle1\ \(2\).png'); background-size: cover;">
+			<h1 width="300">Castle1<br>50,000$</h1>
+		</td>
+		<td class="premium" style="background-image: url('Castle2\ \(2\).png'); background-size: cover;">
+			<h1 width="300">Castle2<br>50,000$</h1>
+		</td>
+		<td class="premium" style="background-image: url('Castle3\ \(2\).png'); background-size: cover;">
+			<h1 width="300">Castle3<br>50,000$</h1>
+		</td>
+	</tr>
+	<tr>
+		<td class="premium" style="background-image: url('Cliff.png'); background-size: cover;">
+			<h1 width="300">Cliff<br>50,000$</h1>
+		</td>
+		<td class="premium" style="background-image: url('Clouds\ \(2\).png'); background-size: cover;">
+			<h1 width="300">Heavens<br>50,000$</h1>
+		</td>
+		<td class="premium" style="background-image: url('Colosseum\ \(2\).png'); background-size: cover;">
+			<h1 width="300">Colosseum<br>50,000$</h1>
+		</td>
+		<td class="premium" style="background-image: url('Crystal\ \(2\).png'); background-size: cover;">
+			<h1 width="300">Crystal World<br>50,000$</h1>
+		</td>
+		<td class="premium" style="background-image: url('Cyberspace\ \(2\).png'); background-size: cover;">
+			<h1 width="300">Cyberspace<br>50,000$</h1>
+		</td>
+	</tr>
+	<tr>
+		<td class="premium" style="background-image: url('DarkSpace.png'); background-size: cover;">
+			<h1 width="300">Cosmos<br>50,000$</h1>
+		</td>
+		<td class="premium" style="background-image: url('DemonCastle1\ \(2\).png'); background-size: cover;">
+			<h1 width="300">Demons<br>50,000$</h1>
+		</td>
+		<td class="premium" style="background-image: url('DemonCastle2\ \(2\).png'); background-size: cover;">
+			<h1 width="300">Demons2<br>50,000$</h1>
+		</td>
+		<td class="premium" style="background-image: url('DemonCastle3\ \(2\).png'); background-size: cover;">
+			<h1 width="300">Demons3<br>50,000$</h1>
+		</td>
+		<td class="premium" style="background-image: url('DemonicWorld\ \(2\).png'); background-size: cover;">
+			<h1 width="300">Sukuna's Domain<br>50,000$</h1>
+		</td>
+	</tr>
+	<tr>
+		<td class="premium" style="background-image: url('Desert\ \(2\).png'); background-size: cover;">
+			<h1 width="300">Sunagakure<br>50,000$</h1>
+		</td>
+		<td class="premium" style="background-image: url('DirtCave\ \(2\).png'); background-size: cover;">
+			<h1 width="300">Cave<br>50,000$</h1>
+		</td>
+		<td class="premium" style="background-image: url('Fort1\ \(2\).png'); background-size: cover;">
+			<h1 width="300">Fortress<br>50,000$</h1>
+		</td>
+		<td class="premium" style="background-image: url('Fort2\ \(2\).png'); background-size: cover;">
+			<h1 width="300">King's closet<br>50,000$</h1>
+		</td>
+		<td class="premium" style="background-image: url('Grassland\ \(2\).png'); background-size: cover;">
+			<h1 width="300">Grassland<br>50,000$</h1>
+		</td>
+	</tr>
+	<tr>
+		<td class="premium" style="background-image: url('GrassMaze\ \(2\).png'); background-size: cover;">
+			<h1 width="300">Lush Cave<br>50,000$</h1>
+		</td>
+		<td class="premium" style="background-image: url('IceCave\ \(2\).png'); background-size: cover;">
+			<h1 width="300">Haku's tribute<br>50,000$</h1>
+		</td>
+		<td class="premium" style="background-image: url('IceMaze\ \(2\).png'); background-size: cover;">
+			<h1 width="300">Ice Age<br>50,000$</h1>
+		</td>
+		<td class="premium" style="background-image: url('Lava.png'); background-size: cover;">
+			<h1 width="300">Jogo's paradise<br>50,000$</h1>
+		</td>
+		<td class="premium" style="background-image: url('LavaCave\ \(2\).png'); background-size: cover;">
+			<h1 width="300">Hell<br>50,000$</h1>
+		</td>
+	</tr>
+	<tr>
+		<td class="premium" style="background-image: url('PoisonSwamp\ \(2\).png'); background-size: cover;">
+			<h1 width="300">Your mom<br>50,000$</h1>
+		</td>
+		<td class="premium" style="background-image: url('Port.png'); background-size: cover;">
+			<h1 width="300">Port<br>50,000$</h1>
+		</td>
+		<td class="premium" style="background-image: url('RockCave\ \(2\).png'); background-size: cover;">
+			<h1 width="300">I give up<br>50,000$</h1>
+		</td>
+		<td class="premium" style="background-image: url('Room1.png'); background-size: cover;">
+			<h1 width="300">Peasant's closet<br>50,000$</h1>
+		</td>
+		<td class="premium" style="background-image: url('Room2.png'); background-size: cover;">
+			<h1 width="300">WTF?<br>50,000$</h1>
+		</td>
+	</tr>
+	<tr>
+		<td class="premium" style="background-image: url('Room3.png'); background-size: cover;">
+			<h1 width="300">Oh!I am moanaaa. Wait no, I am Icelet<br>50,000$</h1>
+		</td>
+		<td class="premium" style="background-image: url('Ruins1.png'); background-size: cover;">
+			<h1 width="300">I am overworked<br>50,000$</h1>
+		</td>
+		<td class="premium" style="background-image: url('Ruins2.png'); background-size: cover;">
+			<h1 width="300">I don't get paid enough for this<br>50,000$</h1>
+		</td>
+		<td class="premium" style="background-image: url('Ruins3.png'); background-size: cover;">
+			<h1 width="300">How did I spend a day making this<br>50,000$</h1>
+		</td>
+		<td class="premium" style="background-image: url('Ship\ \(2\).png'); background-size: cover;">
+			<h1 width="300">Ship<br>50,000$</h1>
+		</td>
+	</tr>
+	<tr>
+		<td class="premium" style="background-image: url('Smoke\ \(2\).png'); background-size: cover;">
+			<h1 width="300">BonFire<br>50,000$</h1>
+		</td>
+		<td class="premium" style="background-image: url('Snowfield\ \(2\).png'); background-size: cover;">
+			<h1 width="300">Snow village<br>50,000$</h1>
+		</td>
+		<td class="premium" style="background-image: url('Space.png'); background-size: cover;">
+			<h1 width="300">Void<br>50,000$</h1>
+		</td>
+		<td class="premium" style="background-image: url('Stone1\ \(2\).png'); background-size: cover;">
+			<h1 width="300">Gold Mine<br>50,000$</h1>
+		</td>
+		<td class="premium" style="background-image: url('Stone2\ \(2\).png'); background-size: cover;">
+			<h1 width="300">Nether Fortress<br>50,000$</h1>
+		</td>
+	</tr>
+	<tr>
+		<td class="premium" style="background-image: url('Stone3\ \(2\).png'); background-size: cover;">
+			<h1 width="300">Moss<br>50,000$</h1>
+		</td>
+		<td class="premium" style="background-image: url('Temple\ \(2\).png'); background-size: cover;">
+			<h1 width="300">Queen's chamber<br>50,000$</h1>
+		</td>
+		<td class="premium" style="background-image: url('Tent\ \(2\).png'); background-size: cover;">
+			<h1 width="300">Barack<br>50,000$</h1>
+		</td>
+		<td class="premium" style="background-image: url('Tower.png'); background-size: cover;">
+			<h1 width="300">War base<br>50,000$</h1>
+		</td>
+		<td class="premium" style="background-image: url('Town1.png'); background-size: cover;">
+			<h1 width="300">Town<br>50,000$</h1>
+		</td>
+	</tr>
+	<tr>
+		<td class="premium" style="background-image: url('Town2.png'); background-size: cover;">
+			<h1 width="300">Town1<br>50,000$</h1>
+		</td>
+		<td class="premium" style="background-image: url('Town3.png'); background-size: cover;">
+			<h1 width="300">Town2<br>50,000$</h1>
+		</td>
+		<td class="premium" style="background-image: url('Town4.png'); background-size: cover;">
+			<h1 width="300">Town3<br>50,000$</h1>
+		</td>
+		<td class="premium" style="background-image: url('Town5.png'); background-size: cover;">
+			<h1 width="300">Iceland<br>50,000$</h1>
+		</td>
+		<td class="premium" style="background-image: url('Wasteland\ \(2\).png'); background-size: cover;">
+			<h1 width="300">World<br>50,000$</h1>
+		</td>
+	</tr>
+	<tr>
+		<td class="premium" style="background-image: url('Forest.png'); background-size: cover;">
+			<h1 width="300">Forest<br>50,000$</h1>
+		</td>
+	</tr>
+	<tr>
+		<select id="paving">
+			<option>Paving</option>
+			<option value="Castle1.png">Castle</option>
+			<option value="Castle2.png">Castle2</option>
+			<option value="Castle3.png">Castle3</option>
+			<option value="Clouds.png">Heavens</option>
+			<option value="Cobblestones1.png">Cobblestones1</option>
+			<option value="Cobblestones2.png">Cobblestones2</option>
+			<option value="Cobblestones3.png">Cobblestones3</option>
+			<option value="Cobblestones4.png">Cobblestones4</option>
+			<option value="Cobblestones5.png">Cobblestones5</option>
+			<option value="Colosseum.png">Colosseum</option>
+			<option value="Crystal.png">Crystal</option>
+			<option value="Cyberspace.png">Cyberspace</option>
+			<option value="DecorativeTile1.png">Decorative Tile 1</option>
+			<option value="DecorativeTile2.png">Decorative Tile 2</option>
+			<option value="DemonCastle1.png">DemonCastle1</option>
+			<option value="DemonCastle2.png">DemonCastle2</option>
+			<option value="DemonCastle3.png">DemonCastle3</option>
+			<option value="DemonicWorld.png">Sukuna's Domain</option>
+			<option value="Desert.png">Sunagakure</option>
+			<option value="Dirt.png">Land</option>
+			<option value="DirtCave.png">Cave</option>
+			<option value="DirtField.png">Soil</option>
+			<option value="Fort1.png">Fortress</option>
+			<option value="Fort2.png">Fortress2</option>
+			<option value="Grassland.png">Grassland</option>
+			<option value="GrassMaze.png">Savanna</option>
+			<option value="Ground1.png">Ground1</option>
+			<option value="Ground2.png">Ground2</option>
+			<option value="IceCave.png">Icy cold</option>
+			<option value="IceMaze.png">True Ice</option>
+			<option value="Lava1.png">Jogo</option>
+			<option value="Lava2.png">Fire</option>
+			<option value="LavaCave.png">Hot Like Me</option>
+			<option value="PoisonSwamp.png">Poseidon</option>
+			<option value="Road1.png">Road1</option>
+			<option value="Road2.png">Road2</option>
+			<option value="Road3.png">Road2</option>
+			<option value="RockCave.png">Stone village</option>
+			<option value="Sand.png">Gaara's Tribute</option>
+			<option value="Smoke.png">Campfire</option>
+			<option value="Snowfield.png">Snowy</option>
+			<option value="Stone1.png">Stony</option>
+			<option value="Stone2.png">Stone2</option>
+			<option value="Stone3.png">Stone3</option>
+			<option value="Temple.png">Temple</option>
+			<option value="Tent.png">Tent</option>
+			<option value="Wasteland.png">Wasteland</option>
+			<option value="Wood2.png">Woody floor</option>
+			<option value="Wood1.png">Wood from walmart</option> 
+		  </select>
+		  <button class="button noice" onclick="vla=document.getElementById('paving').value;localStorage.footing=vla;alert('You have selected '+localStorage.footing+' as the footing');confirm('Do you want to go back');if(confirm('Do you want to go back')===true){window.open('index.htm','_self')}">Apply <i class="fa fa-download"></i></button>
+		  <button class="button noice" onclick="window.open('index.htm','_self')">Home</button>
+		</tr>
+</table>
+<table style="bottom: -10000px;">
+	<tr>
+	<th colspan="5">
+		<h1>Characters</h1>
+	</th>
+	</tr>
+	<tr> <div>
+		<th><img src="naruto/icon.png">
+			<h1>Naruto</h1>
+		</th></div>
+		<th><div onclick="if (JSON.parse(localStorage.buy).characters.includes('sasuke')===true){alert('You already own it')}else{if(localStorage.cash>100000){confirm('Buy sasuke');if(confirm('Buy sasuke')===true){iamdone=JSON.parse(localStorage.buy);iamdone.characters.push('sasuke');localStorage.setItem('buy',JSON.stringify(iamdone));localStorage.cash = localStorage.cash - 100000;document.getElementById('bruhok').innerHTML=localStorage.cash+'$';}}}" >
+			<img src="sasuke/icon.png">
+			<h1>Sasuke</h1>
+		</th></div>
+	</tr>
+</table>
+<div class="wrapper">
+	<div><span class="dot"></span></div>
+	<div><span class="dot"></span></div>
+	<div><span class="dot"></span></div>
+	<div><span class="dot"></span></div>
+	<div><span class="dot"></span></div>
+	<div><span class="dot"></span></div>
+	<div><span class="dot"></span></div>
+	<div><span class="dot"></span></div>
+	<div><span class="dot"></span></div>
+	<div><span class="dot"></span></div>
+	<div><span class="dot"></span></div>
+	<div><span class="dot"></span></div>
+	<div><span class="dot"></span></div>
+	<div><span class="dot"></span></div>
+	<div><span class="dot"></span></div>
+  </div>
+  <script>
+var tdElements = document.getElementsByTagName('td');
+
+for (var i = 0; i < tdElements.length; i++) {
+    tdElements[i].addEventListener("click", function () {
+        var unrefinedimg = window.getComputedStyle(this).getPropertyValue('background-image');
+        var refined = unrefinedimg.replace('url("', '').replace('")', '');
+        var fileName = refined.split('/').pop();
+
+        if (this.className === 'premium') {
+            if (localStorage.cash > 50000) {
+                if (!JSON.parse(localStorage.buy).backgrounds.includes(fileName)) {
+                    if (confirm('Are you sure you want to purchase this')) {
+                        var bought = JSON.parse(localStorage.buy);
+                        bought.backgrounds.push(fileName);
+                        localStorage.setItem('buy', JSON.stringify(bought));
+                        localStorage.cash = localStorage.cash - 50000;
+						document.getElementById('bruhok').innerHTML=localStorage.cash+'$';
+                    }
+                } else {
+                    alert('You already own it');
+                }
+            } else {
+                alert('You are broke');
+            }
+        } else {
+            if (localStorage.cash > 5000) {
+                if (!JSON.parse(localStorage.buy).backgrounds.includes(fileName)) {
+                    if (confirm('Are you sure you want to purchase this')) {
+                        var bought = JSON.parse(localStorage.buy);
+                        bought.backgrounds.push(fileName);
+                        localStorage.setItem('buy', JSON.stringify(bought));
+                        localStorage.cash = localStorage.cash - 5000;
+						document.getElementById('bruhok').innerHTML=localStorage.cash+'$';
+                    }
+                } else {
+                    alert('You already own it');
+                }
+            } else {
+                alert('You are broke');
+            }
+        }
+    });
+}
+document.getElementById('bruhok').innerHTML=localStorage.cash+'$';
+
+  </script>
+</body>
+</html>

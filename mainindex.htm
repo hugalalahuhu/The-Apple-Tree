@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Something cool</title>
+        <link href='https://fonts.googleapis.com/css?family=Press Start 2P' rel='stylesheet'>
+        <link rel="shortcut icon" type="image/x-icon" href="static/icon.gif" />
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+
+</head>
+<body bgcolor="#000000">
+<style>
+body {
+	background-image: url("static/bg2.png");
+    background-repeat: repeat;
+    animation: cursorcursornojutsu 0.3s infinite;
+    font-family: 'Press Start 2P';
+}
+html{
+    width: 100%;
+    height: 100%;
+    overflow-x: hidden;
+}
+body{
+    width: 100%;
+    height: 80%;
+    margin: 0;
+    padding: 0;
+}
+.container{
+    margin-top: 1%;
+    display:grid;
+    width: 100%;
+    height: 100%;
+    grid-template-columns: repeat(12, minmax(0,1fr));
+    grid-template-rows: repeat(2,minmax(0,1fr)) minmax(0,1.2fr);
+    column-gap: 1vw;
+    row-gap: 1vh;
+}
+img{
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+.container > div{
+    display: block;
+    object-fit: contain;
+    transition: transform 0.5s;
+}
+.container > div:hover{
+    transform: scale(1.1);
+}
+.linear-text-gradient {
+            animation: idkwhattoname 2s infinite;
+            
+            
+        }
+@keyframes idkwhattoname {
+    0%{
+        background: linear-gradient(to right, red,purple, blue);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+        
+    }
+    50%{
+        background: linear-gradient(to right, blue, red, purple);
+        -webkit-background-clip: text; 
+        background-clip: text;
+        color: transparent;
+    }
+    100%{
+        background: linear-gradient(to right, purple,blue,red);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+    }
+
+}
+@keyframes cursorcursornojutsu {
+                0%{
+                    cursor: e-resize;
+
+                }14%{
+                    cursor: ne-resize;
+                }28%{
+                    cursor: n-resize;
+                }43%{
+                    cursor: nw-resize;
+                }56%{
+                    cursor: w-resize;
+                }70%{
+                    cursor: sw-resize;
+                }85%{
+                    cursor: s-resize;
+                }100%{
+                    cursor: se-resize;
+                    }
+            }
+@media (max-width: 1000px) {
+    .container{
+        display: flex;
+        flex-direction: column;
+    }
+    #ever{
+        display:block
+    }
+}
+@media (min-width: 1000px) {
+    #ever{
+        overflow-y: auto;
+    }
+}
+</style>
+
+<div class="container">
+    <div id="top" style="grid-row: 1; grid-column: 3 / 11;padding-top: 10px;"><a href="index.htm"><img src="static/top.gif" ></a></div>
+    <div id="secoleft" style="background-image: url('static/Bg.png');grid-row:2; grid-column: 3 / 8;background-size: contain; font-size: large;border: 1px solid red;"><p> Hello, I'm not<span> </span><span class="linear-text-gradient">Reigen Arataka, </span>the new star of the psychic world! Do try to do it alone !! Don't come talk to me. Honest Billing and options not available !!!</p></div>
+    <div id="secoright" style="grid-row: 2; grid-column: 8/11;"><img src="static/mob.jpg" style="border: 1px solid red;object-fit: cover;" id="heh" ></div>
+    <div style="grid-row: 3; grid-column: 3 / 11 ;background: linear-gradient(0deg,RGBA(0,0,50,1)1%, RGBA(0,0,0,1)70%);color: white;display:flex;flex-wrap: wrap;" id="ever">
+        <ul>Check out some other projects from me:
+            <br><br>
+            <li><a href="Apple tree/index.htm">The apple tree</a></li>
+            <br>
+            <li>CS50w:</li>
+            <br>
+            <a href="Project 0/index.html">Google replica</a>
+            <br><br>
+            <li>Contact:</li>
+            <br>
+            <a href="https://www.instagram.com/dfeear/">Instagram</a>
+            <a href="mailto:iceletgautam@gmail.com">Email</a>
+            <a href="tel:+9779763246343">Phone:9763246343</a>
+            <a href="https://github.com/hugalalahuhu">Github</a>
+        </ul>
+    </div>
+</div>
+<script>
+    $(document).ready(function(){
+        $("#heh").hover(function(){
+            $(this).fadeOut(100).queue(function(next){
+                if($(this).attr("src") == "static/mob.jpg")
+                    $(this).attr("src","static/wh.jpg");
+                else{
+                    $(this).attr("src","static/mob.jpg");
+                }
+                next();
+            }).fadeIn(100)
+        })
+    })
+</script>
+</body>
+</html>
