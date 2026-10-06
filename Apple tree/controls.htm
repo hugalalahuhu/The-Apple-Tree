@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link href='https://fonts.googleapis.com/css?family=Press Start 2P' rel='stylesheet'>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title></title>
+</head>
+<body style="font-family: 'Press Start 2P';background-image:url('controlbgdoraemon.jpg');background-size: cover;background-attachment: fixed;">
+<h1 align="center">
+<span onmouseover="document.getElementById('Character1').innerHTML='Press D to move this character towards left, A to move this character towards right,W to jump,S to use special skills.X for atttack 1.'" onmouseleave="document.getElementById('Character1').innerHTML='';">Character 1</span></h1>
+<hr>
+<div id="Character1"></div>
+<hr>
+<h1 align="center">
+<span onmouseover="document.getElementById('Character2').innerHTML='Press → to move this character towards left,  🠀  to move this character towards right, ↑ to jump, ↓ to use special skills. Use numeric keypad to control this character. Turn off Nums lock. Press 5 for atttack 1.'" onmouseleave="document.getElementById('Character2').innerHTML='';">Character 2</span>
+</h1>
+<hr>
+<div id="Character2"></div>
+<hr>
+<div onmouseleave="document.getElementById('howto').style.visibility='hidden';"><h1 align="center" onmouseover="document.getElementById('howto').style.visibility='visible'">HOW TO</h1>
+<hr>
+<div id="howto" style="visibility: hidden;">
+	<ul>
+		<li onmouseover="document.getElementById('Selectch').innerHTML='Press the characters you want to select. Donot tell me that you cannot do that.'" onmouseleave="document.getElementById('Selectch').innerHTML='';">Select character</li>
+		<hr>
+		<div id="Selectch"></div>
+		<hr>
+		<li onmouseover="document.getElementById('MOONWALK').innerHTML='Press the both of the keys for moving the same character.For ex: Press both d and a for character 1.Feel free to experiment with it.'" onmouseleave="document.getElementById('MOONWALK').innerHTML='';">MOONWALK</li>
+		<hr>
+		<div id="MOONWALK"></div>
+	</ul>
+</div>
+</div>
+<hr>
+</body>
+</html>
