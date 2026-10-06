@@ -138,14 +138,14 @@ img{
 <script>
     $(document).ready(function(){
         $("#heh").hover(function(){
-            $(this).fadeOut(100).queue(function(next){
+            $(this).fadeOut().queue(function(next){
                 if($(this).attr("src") == "static/mob.jpg")
                     $(this).attr("src","static/wh.jpg");
                 else{
                     $(this).attr("src","static/mob.jpg");
                 }
                 next();
-            }).fadeIn(100)
+            }).fadeIn()
         })
     })
 </script>
