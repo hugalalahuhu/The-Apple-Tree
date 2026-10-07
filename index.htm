@@ -156,7 +156,7 @@
 
 }
 @media (max-width: 800px) {
-    .name,.serif,span,#thrdone,#som{
+    .name,.serif,span,#thrdone{
         display: none;
     }
     #container{
@@ -168,7 +168,7 @@
         gap: 0px;
     }
     #sprits{
-        flex:0
+        flex:0.4
     }
     #stars{
         flex:0.4;
@@ -420,6 +420,14 @@ $(document).mouseenter(function(){
 
 
 })
+fetch("https://dark-river-c006visitorcounter.iceletgautam.workers.dev/")
+    .then(response => response.json())
+    .then(data => {
+        console.log("Counter response:", data);
+    })
+    .catch(error => {
+        console.error("Counter error:", error);
+    });
 </script>
 </div>
 <div id="animcont"></div>
