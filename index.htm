@@ -120,7 +120,12 @@
             #changingone{
   transition: transform 0.2s ease;
 }
-
+#animcont{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
 #changingone:hover {
   transform: scale(1.1);
 }
@@ -171,22 +176,22 @@
         justify-content: center;
         align-items: center;
         flex-wrap: wrap;
-        gap: 0px;
+        gap: 2vh;
     }
     #sprits{
-        flex:0.4
+        flex:0.2
     }
     #stars{
-        flex:0.4;
+        flex:0.3;
     }
     #fthone{
-        flex:0.5;
+        flex:0.4;
     }
     #sthone{
         flex:0.1;
     }
     #svthone{
-        flex:1;
+        flex:0.7;
     }
     #ethone{
         flex:0.2;
@@ -198,14 +203,14 @@
         flex:0.4;
         margin-top:auto;
     }
-
-}
 #animcont{
     width: 100%;
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
 }
+}
+
 @keyframes animate{
     0%{
         transform: rotateY(0deg);
@@ -225,7 +230,7 @@
     border-radius: 1px;
     height: fit-content;
     font-family: "Digital Display";
-    font-size: clamp(50px, 5vw, 120px);
+    font-size: clamp(100px, 3vw, 120px);
     border-top: 2px solid #555;
     border-right: 2px solid #555;
     box-shadow: 3px -3px 0 #777;
@@ -425,7 +430,7 @@ function doit(){
     let a=new Image();
     a.src="static/star.png";
     a.style.position="relative";
-    a.style.top="-100vw";
+    a.style.top="-100vh";
     document.getElementById("animcont").appendChild(a);
     a.style.height=parseInt(Math.random()*20)+"vw";
     a.style.animation="animate "+(Math.random()*3+2)+"s linear forwards";
@@ -445,6 +450,7 @@ $(document).mouseenter(function(){
 fetch("https://dark-river-c006visitorcounter.iceletgautam.workers.dev/")
     .then(response => response.text())
     .then(count => {
+        count=retprop(count);
         document.getElementById("tnthone").innerHTML="<span style='text-align:right;color: #B09FB5;text-shadow:1px 1px 0 #6f6473,-1px -1px 0 #d0c2d3;'>Your' (Ur) the<br>あなたは人目</span> <ice class='visitor-count'>"+count+"</ice><span style='color: #B09FB5;text-shadow:1px 1px 0 #6f6473,-1px -1px 0 #d0c2d3;'> visitor here!<br>の訪問者です</span>";
 
     });
@@ -457,6 +463,16 @@ document.getElementById("body").addEventListener("keydown", function(e){
         e.preventDefault();
     }
 });
+
+function retprop(dums){
+    dums=dums.toString();
+    nooz=9-dums.length;
+    for(let j=0;j<nooz;j++){
+        dums="0"+dums;
+    }
+    console.log(dums);
+    return dums;
+}
 </script>
 </div>
 <div id="animcont"></div>
