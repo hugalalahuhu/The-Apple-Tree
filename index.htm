@@ -165,7 +165,7 @@
         flex:1;
     }
     .visitor-count{
-        font-size: 70px;
+        font-size: 4vw;
     }
 
 }
@@ -174,7 +174,7 @@
         display: none;
     }
     .visitor-count{
-        font-size: 100px;
+        font-size: 4vw;
     }
     #container{
         display:flex;
@@ -209,12 +209,6 @@
         flex:0.4;
         margin-top:auto;
     }
-#animcont{
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-}
 }
 
 @keyframes animate{
@@ -236,7 +230,7 @@
     border-radius: 1px;
     height: fit-content;
     font-family: "Digital Display";
-    font-size: 3vw;
+    font-size: clamp(50px, 3vw, 120px);
     border-top: 2px solid #555;
     border-right: 2px solid #555;
     box-shadow: 3px -3px 0 #777;
@@ -453,13 +447,14 @@ $(document).mouseenter(function(){
 
 
 })
-fetch("https://dark-river-c006visitorcounter.iceletgautam.workers.dev/")
-    .then(response => response.text())
-    .then(count => {
-        count=retprop(count);
+// fetch("https://dark-river-c006visitorcounter.iceletgautam.workers.dev/")
+    // .then(response => response.text())
+    // .then(count => {
+        // count=retprop(count);
+        count="000000000";
         document.getElementById("tnthone").innerHTML="<span style='text-align:right;color: #B09FB5;text-shadow:1px 1px 0 #6f6473,-1px -1px 0 #d0c2d3;'>Your' (Ur) the<br>あなたは人目</span> <ice class='visitor-count'>"+count+"</ice><span style='color: #B09FB5;text-shadow:1px 1px 0 #6f6473,-1px -1px 0 #d0c2d3;'> visitor here!<br>の訪問者です</span>";
 
-    });
+    // });
 
 document.getElementById("body").addEventListener("contextmenu", function(e){
     e.preventDefault();
