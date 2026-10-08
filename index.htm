@@ -479,14 +479,13 @@ $(document).mouseenter(function(){
 
 
 })
-// fetch("https://dark-river-c006visitorcounter.iceletgautam.workers.dev/")
-    // .then(response => response.text())
-    // .then(count => {
-        // count=retprop(count);
-        count="000000000";
+fetch("https://dark-river-c006visitorcounter.iceletgautam.workers.dev/")
+    .then(response => response.text())
+    .then(count => {
+        count=retprop(count);
         document.getElementById("tnthone").innerHTML="<span style='text-align:right;color: #B09FB5;text-shadow:1px 1px 0 #6f6473,-1px -1px 0 #d0c2d3;'>Your' (Ur) the<br>あなたは人目</span> <ice class='visitor-count'>"+count+"</ice><span style='color: #B09FB5;text-shadow:1px 1px 0 #6f6473,-1px -1px 0 #d0c2d3;'> visitor here!<br>の訪問者です</span>";
 
-    // });
+    });
 
 document.getElementById("body").addEventListener("contextmenu", function(e){
     e.preventDefault();
