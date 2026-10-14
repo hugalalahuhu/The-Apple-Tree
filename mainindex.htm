@@ -12,6 +12,12 @@
 </head>
 <body bgcolor="#000000">
 <style>
+    *{
+    scrollbar-width: none;
+  }
+  *::-webkit-scrollbar {
+    display: none;
+}
 body {
 	background-image: url("static/bg2.png");
     background-repeat: repeat;
@@ -21,7 +27,6 @@ body {
 html{
     width: 100%;
     height: 100%;
-    overflow-x: hidden;
 }
 body{
     width: 100%;
@@ -138,10 +143,11 @@ img{
 </div>
 <script>
     $(document).ready(function(){
-        $("#heh").hover(function(){
+        $("#heh").dblclick(function(){
+            img=["wh.jpg","r1.jpg","r3.jpg","r4.png","cool.jpg"];
             $(this).fadeOut().queue(function(next){
                 if($(this).attr("src") == "static/mob.jpg")
-                    $(this).attr("src","static/wh.jpg");
+                    $(this).attr("src","static/"+img[Math.floor(Math.random()*img.length)]);
                 else{
                     $(this).attr("src","static/mob.jpg");
                 }
